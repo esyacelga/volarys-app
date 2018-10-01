@@ -11,13 +11,15 @@ import {LayoutModule} from '@angular/cdk/layout';
 import {MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule} from '@angular/material';
 import {HeaderComponent} from './components/type-scripts/header.component';
 import {BodyComponent} from './components/type-scripts/body.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    BodyComponent
+    BodyComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
