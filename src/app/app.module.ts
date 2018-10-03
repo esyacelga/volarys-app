@@ -12,6 +12,7 @@ import {MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatL
 import {HeaderComponent} from './components/type-scripts/header.component';
 import {BodyComponent} from './components/type-scripts/body.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { FooterComponent } from './components/footer/footer.component';
     AppComponent,
     HeaderComponent,
     BodyComponent,
-    FooterComponent
+    FooterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
