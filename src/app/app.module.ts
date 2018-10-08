@@ -33,7 +33,6 @@ import {HeroesComponent} from './components/heroes/heroes.component';
     HeroesComponent
   ],
   imports: [
-    APP_ROUTING,
     BrowserModule,
     BrowserAnimationsModule,
     NoopAnimationsModule,
@@ -44,7 +43,8 @@ import {HeroesComponent} from './components/heroes/heroes.component';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    APP_ROUTING
   ],
   providers: [],
   bootstrap: [AppComponent]
