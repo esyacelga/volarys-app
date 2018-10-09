@@ -21,6 +21,7 @@ import {HomeComponent} from './components/home/home.component';
 import {AbautComponent} from './components/abaut/abaut.component';
 import {HeroesComponent} from './components/heroes/heroes.component';
 import {HeroesService} from './servicios/heroes.service';
+import { HeroeComponent } from './components/heroe/heroe.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import {HeroesService} from './servicios/heroes.service';
     FooterComponent,
     HomeComponent,
     AbautComponent,
-    HeroesComponent
+    HeroesComponent,
+    HeroeComponent
   ],
   imports: [
     BrowserModule,
