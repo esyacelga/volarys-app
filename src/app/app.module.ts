@@ -20,6 +20,7 @@ import {FooterComponent} from './components/footer/footer.component';
 import {HomeComponent} from './components/home/home.component';
 import {AbautComponent} from './components/abaut/abaut.component';
 import {HeroesComponent} from './components/heroes/heroes.component';
+import {HeroesService} from './servicios/heroes.service';
 
 
 @NgModule({
@@ -46,7 +47,9 @@ import {HeroesComponent} from './components/heroes/heroes.component';
     MatListModule,
     APP_ROUTING
   ],
-  providers: [],
+  providers: [
+    HeroesService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
