@@ -62,13 +62,18 @@ export class HeroesService {
   getLstHeroes(): Heroe[] {
     return this._lstHeroes;
   }
+
+  getHeroe(idx: number): Heroe {
+    return this._lstHeroes[idx];
+  }
+
 }
 
 export interface Heroe {
-    nombre: String;
-    bio: String;
-    img: String;
-    aparicion: String;
-    casa: String;
+  nombre: String;
+  bio: String;
+  img: String;
+  aparicion: String;
+  casa: String;
 }
 
