@@ -1,58 +1,23 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouteReuseStrategy } from '@angular/router';
 
-import {AppComponent} from './app.component';
-import {ServiceWorkerModule} from '@angular/service-worker';
-import {environment} from '../environments/environment';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {MaterialModule} from './material';
-import {LayoutModule} from '@angular/cdk/layout';
-import {MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule} from '@angular/material';
+import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
 
-// Rutas
-import {APP_ROUTING} from './app.routes';
-
-// Componentes
-import {HeaderComponent} from './components/type-scripts/header.component';
-import {BodyComponent} from './components/type-scripts/body.component';
-import {FooterComponent} from './components/footer/footer.component';
-import {HomeComponent} from './components/home/home.component';
-import {AbautComponent} from './components/abaut/abaut.component';
-import {HeroesComponent} from './components/heroes/heroes.component';
-import {HeroesService} from './servicios/heroes.service';
-import { HeroeComponent } from './components/heroe/heroe.component';
-
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    BodyComponent,
-    FooterComponent,
-    HomeComponent,
-    AbautComponent,
-    HeroesComponent,
-    HeroeComponent
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    NoopAnimationsModule,
-    MaterialModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
-    LayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    APP_ROUTING
-  ],
+  declarations: [AppComponent],
+  entryComponents: [],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
   providers: [
-    HeroesService
+    StatusBar,
+    SplashScreen,
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule {}

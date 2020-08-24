@@ -1,0 +1,7 @@
+{
+  "name": "volarys-app",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
