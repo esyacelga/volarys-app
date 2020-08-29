@@ -19,7 +19,7 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {firebaseConfig} from '../environments/environment';
-// import {Facebook} from '@ionic-native/facebook/ngx';
+import {Facebook} from '@ionic-native/facebook/ngx';
 import {Network} from '@ionic-native/network/ngx';
 
 @NgModule({
@@ -29,7 +29,7 @@ import {Network} from '@ionic-native/network/ngx';
         IonicStorageModule.forRoot(), AngularFireAuthModule, AngularFireModule.initializeApp(firebaseConfig), AngularFirestoreModule],
     providers: [
         Network,
-        // Facebook,
+        Facebook,
         GooglePlus,
         ComponentModule,
         Camera,

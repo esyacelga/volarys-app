@@ -4,11 +4,10 @@ import {Util} from '../../system/generic/classes/util';
 import {GooglePlus} from '@ionic-native/google-plus/ngx';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {auth} from 'firebase';
-/*import {Facebook, FacebookLoginResponse} from '@ionic-native/facebook/ngx';
-import {COLOR_TOAST_DARK, COLOR_TOAST_ERROR, COLOR_TOAST_MEDIUM, OFFLINE} from '../../system/generic/classes/constant';*/
+import {Facebook, FacebookLoginResponse} from '@ionic-native/facebook/ngx';
+import {COLOR_TOAST_DARK, COLOR_TOAST_ERROR, COLOR_TOAST_MEDIUM, OFFLINE} from '../../system/generic/classes/constant';
 import {Network} from '@ionic-native/network/ngx';
 import {Platform} from '@ionic/angular';
-import {COLOR_TOAST_MEDIUM, OFFLINE} from '../../system/generic/classes/constant';
 
 @Injectable({
     providedIn: 'root'
@@ -20,7 +19,7 @@ export class LoginService {
                 private utils: Util,
                 private google: GooglePlus,
                 private svrNet: Network,
-                // private svrFB: Facebook,
+                private svrFB: Facebook,
                 private platform: Platform,
                 private svrAuth: AngularFireAuth) {
 
@@ -54,7 +53,7 @@ export class LoginService {
             return null;
         }
         const promesa = new Promise(async (resolve, reject) => {
-        /*    this.svrFB.login(['email', 'public_profile']).then((responce: FacebookLoginResponse) => {
+            this.svrFB.login(['email', 'public_profile']).then((responce: FacebookLoginResponse) => {
                 const credencialFB = auth.FacebookAuthProvider.credential(responce.authResponse.accessToken);
                 this.svrAuth.signInWithCredential(credencialFB).then((objResponce) => {
                     resolve(objResponce);
@@ -64,7 +63,7 @@ export class LoginService {
                 });
             }, (error) => {
                 this.utils.presentToast(JSON.stringify(error), COLOR_TOAST_DARK);
-            });*/
+            });
         });
         return promesa;
     }
