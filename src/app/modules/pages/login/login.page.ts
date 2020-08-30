@@ -19,6 +19,7 @@ import {LoginService} from '../../services/persona/login.service';
 import {GoogleObject} from '../../classes/login/GoogleObject';
 import {environment} from '../../../../environments/environment';
 import {Usuario} from '../../interfaces/interfaces';
+import {LoadingService} from "../../system/generic/service/loading.service";
 
 @Component({
     selector: 'app-login',
@@ -49,14 +50,18 @@ export class LoginPage implements OnInit {
 
 
     async loginFaceBook() {
+        await this.loading.present('messagesService.loadMessagesOverview', 'Procesando...');
         const objUsuario: GoogleObject = (await this.svrLogin.loginWithFaceBook() as GoogleObject);
+        this.loading.dismiss('messagesService.loadMessagesOverview');
         if (objUsuario) {
             await this.validarLogin(objUsuario);
         }
     }
 
     async loginGoogle() {
+        await this.loading.present('messagesService.loadMessagesOverview', 'Procesando...');
         const objUsuario: GoogleObject = (await this.svrLogin.loginWithGoogle() as GoogleObject);
+        this.loading.dismiss('messagesService.loadMessagesOverview');
         if (objUsuario) {
             await this.validarLogin(objUsuario);
         }
@@ -197,6 +202,7 @@ export class LoginPage implements OnInit {
                 private svrUsuario: UsuarioService,
                 private navCtrl: NavController,
                 private svrRoute: Router,
+                protected loading: LoadingService,
                 private svrStorage: StorageAppService,
                 private svtNotificacion: PushNotificationService,
                 private platform: Platform,

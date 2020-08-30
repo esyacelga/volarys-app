@@ -33,6 +33,12 @@ export class CommentComponent implements OnInit {
         comentario = null;
     }
 
+    public async eliminarComentario(comentario: ItemComment) {
+        this.objComent = await this.svrComment.eliminar(comentario);
+        await this.obtenerComentarios();
+        comentario = null;
+    }
+
     public cerrarMoal() {
         if (this.objComent && this.objComent.articulo) {
             this.modal.dismiss({objArt: this.objComent.articulo});

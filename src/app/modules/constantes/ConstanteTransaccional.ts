@@ -12,6 +12,7 @@ export const CRUD_SOLICITUD = 'solicitud';
 export const CRUD_ACTUALIZAR_SOLICITUD = 'solicitud/actualizar';
 export const CRUD_ARTICULO = 'articulo';
 export const CRUD_COMENTARIO = 'commentario';
+export const CRUD_COMENTARIO_ELIMINADO = 'commentario/eliminar';
 export const CRUD_LIKE_DISLIKE = 'likeDislike';
 
 export const OBTENER_COMENTARIOS = 'commentario/obtenerTodos';

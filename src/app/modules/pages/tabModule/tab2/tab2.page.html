@@ -6,7 +6,7 @@
     </ion-button>
 </ion-buttons>
 <ion-content color="dark" fullscreen>
-    <ion-list>
+    <ion-list color="dark">
         <ion-item color="primary">
             <ion-label>Total</ion-label>
             <div slot="end">{{ sumatoria}}</div>
@@ -29,7 +29,7 @@
             </ion-item-options>
         </ion-item-sliding>
         <ion-button *ngIf="lstDetalle.length>0" color="tertiary" slot="end" (click)="registrarSolicitud()">
-            COMPRAR
+            SOLCITAR
         </ion-button>
     </ion-item-group>
 </ion-content>

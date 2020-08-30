@@ -1,5 +1,16 @@
 import {Injectable} from '@angular/core';
-import {COLOR_TOAST_ERROR, COLOR_TOAST_MEDIUM, COLOR_TOAST_PRIMARY, DURATION_TOAST, ERROR_MESSAGE, LOAD_MESSAGE, OFFLINE, PROC_GET_XML_GENERICO, PROC_XML_REST_GENERICO, SUCCESS_MESSAGE} from '../classes/constant';
+import {
+    COLOR_TOAST_ERROR,
+    COLOR_TOAST_MEDIUM,
+    COLOR_TOAST_PRIMARY,
+    DURATION_TOAST,
+    ERROR_MESSAGE,
+    LOAD_MESSAGE,
+    OFFLINE,
+    PROC_GET_XML_GENERICO,
+    PROC_XML_REST_GENERICO,
+    SUCCESS_MESSAGE
+} from '../classes/constant';
 import {Platform, ToastController} from '@ionic/angular';
 import {RequestOptions} from '../classes/RequestOptions';
 import {LoadingService} from './loading.service';
@@ -54,7 +65,7 @@ export class ExecuteCallProcedureService {
             if (options.toastColor === undefined) {
                 options.toastColor = COLOR_TOAST_PRIMARY;
             }
-            await this.loading.present('messagesService.loadMessagesOverview', 'Procesando...');
+
             this.restConnection.procConsultaGenerica(genericObject, storeProcedure, options.restUrl).subscribe(async resp => {
                 this.loading.dismiss('messagesService.loadMessagesOverview');
                 if (resp.RETURN_VALUE !== 1) {
@@ -80,7 +91,7 @@ export class ExecuteCallProcedureService {
         return promesa;
     }
 
-    public ejecucionGenerica = function(genericObject: any, storeProcedure: string, messages?: RequestOptions) {
+    public ejecucionGenerica = function (genericObject: any, storeProcedure: string, messages?: RequestOptions) {
         const promesa = new Promise((resolve, reject) => {
             if (!messages) {
                 messages = new RequestOptions();
@@ -222,7 +233,7 @@ export class ExecuteCallProcedureService {
         return mensajes;
     }
 
-    public servicioRestGenericoPost = function(genericObject: any, urlRestService: string, messages?: RequestOptions) {
+    public servicioRestGenericoPost = function (genericObject: any, urlRestService: string, messages?: RequestOptions) {
         if (this.internetConection === false) {
             this.presentToast(OFFLINE, COLOR_TOAST_MEDIUM, 'bottom');
             return;
@@ -291,14 +302,14 @@ export class ExecuteCallProcedureService {
                     }
                     resolve(obj);
                 }, async error => {
-                    const mensaje = this.lectorError(error.error.errors.errors);
                     await this.loading.dismiss('messagesService.loadMessagesOverview');
-                    if (error && error.errors && error.errors.errors && mensaje === '') {
-                        this.presentToast(error.errors.errors.message, COLOR_TOAST_ERROR);
+                    let mensaje = 'Error en al ejcuatar la peticion PUT';
+                    if (error && error.error && error.error.errors && error.error.errors.errors) {
+                        mensaje = this.lectorError(error.error.errors.errors);
                     } else {
                         this.presentToast(mensaje, COLOR_TOAST_ERROR);
                     }
-                    reject(error);
+                    reject(mensaje);
                 });
             }
 
@@ -307,7 +318,7 @@ export class ExecuteCallProcedureService {
     };
 
 
-    public fileTransferService = function(genericObject: ImageObject, urlRestService: string, messages?: RequestOptions) {
+    public fileTransferService = function (genericObject: ImageObject, urlRestService: string, messages?: RequestOptions) {
         return new Promise(async (resolve, reject) => {
             if (!messages) {
                 messages = new RequestOptions();

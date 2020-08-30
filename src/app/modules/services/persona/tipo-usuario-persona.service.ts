@@ -26,7 +26,7 @@ export class TipoUsuarioPersonaService {
     async obtenerPorCorreo(email: string) {
         const requestOptions = new RequestOptions();
         requestOptions.presentarToast = false;
-        requestOptions.mostrarLoading = false;
+        requestOptions.mostrarLoading = true;
         const objTipoUsuarioPersona: ModeloTipoUsuarioPersona =
             (await this.genericService.servicioRestGenericoGet({correo: email}, OBTENER_TODOS_PERSONA_TIPO_USUARIO_POR_CORREO, requestOptions)) as ModeloTipoUsuarioPersona;
         return objTipoUsuarioPersona;

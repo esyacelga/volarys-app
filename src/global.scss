@@ -24,3 +24,20 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.error-messages {
+  font-size: 0.7em;
+  color: brown;
+  text-align: center;
+}
+
+
+.swiper-pagination {
+  bottom: 93% !important;
+}
+
+
+ion-list {
+  background-color: #222428 !important;
+}
+
