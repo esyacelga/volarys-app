@@ -17,6 +17,8 @@ export class Articulo {
     public conteoLike = 0;
     public conteoDisLike = 0;
     public conteoComentarios = 0;
+    public verObservacion: false;
+    public obsevacion: string;
 }
 
 
@@ -35,4 +37,6 @@ export class ObjetoArticulo {
     public permiteComentar: false;
     public coords: string;
     public imgs?: string[];
+    public verObservacion: false;
+    public obsevacion: string;
 }

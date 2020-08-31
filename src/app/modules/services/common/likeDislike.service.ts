@@ -7,7 +7,6 @@ import {COLOR_TOAST_SUCCESS} from '../../system/generic/classes/constant';
 import {LikeDislike} from '../../classes/common/LikeDislike';
 
 
-const URL = environment.url;
 
 @Injectable({
     providedIn: 'root'

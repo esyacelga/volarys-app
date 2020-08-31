@@ -6,8 +6,11 @@
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
+<ion-header *ngIf="!tipoArticulo">
+    <app-imagen-usuario></app-imagen-usuario>
+</ion-header>
 <ion-content color="dark">
-    <app-imagen-usuario *ngIf="!tipoArticulo"></app-imagen-usuario>
+
     <app-item-seleccionado size="12" size-lg="12" size-md="12" size-sm="12" size-xs="12"
                            *ngIf="tipoArticulo" [tipoArticulo]="tipoArticulo">
     </app-item-seleccionado>

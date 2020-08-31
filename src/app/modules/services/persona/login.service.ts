@@ -39,10 +39,8 @@ export class LoginService {
             this.utils.presentToast(OFFLINE, COLOR_TOAST_MEDIUM, 'bottom');
             return null;
         }
-
         return this.google.login({}).then(result => {
             const userDataGoogle = result;
-            console.log(result);
             return this.svrAuth.signInWithCredential(auth.GoogleAuthProvider.credential(null, userDataGoogle.accessToken));
         });
     }
@@ -59,10 +57,11 @@ export class LoginService {
                     resolve(objResponce);
                 }, error => {
                     this.utils.presentToast(JSON.stringify(error), COLOR_TOAST_ERROR);
-                    reject(error);
+                    resolve(null);
                 });
             }, (error) => {
                 this.utils.presentToast(JSON.stringify(error), COLOR_TOAST_DARK);
+                resolve(null);
             });
         });
         return promesa;

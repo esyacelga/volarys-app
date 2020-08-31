@@ -4,7 +4,7 @@
             {{displayName}}
         </small>
     </h6>
-    <ion-avatar slot="end">
+    <ion-avatar slot="end" *ngIf="photo">
         <img [src]="photo |urlSanitizer">
     </ion-avatar>
 </ion-item>

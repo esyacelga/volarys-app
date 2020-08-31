@@ -33,6 +33,12 @@ export class ArticuloService {
         return await this.genericService.servicioRestGenericoGet({}, OBTENER_TODOS_ARTICULOS, requestOptions);
     }
 
+    async obtenerArticulosSinloading() {
+        const requestOptions = new RequestOptions();
+        requestOptions.mostrarLoading = false;
+        requestOptions.presentarToast = false;
+        return await this.genericService.servicioRestGenericoGet({}, OBTENER_TODOS_ARTICULOS, requestOptions);
+    }
 
     /**
      * Servicio de envio de imagenes al servidor

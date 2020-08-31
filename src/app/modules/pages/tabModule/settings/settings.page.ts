@@ -4,7 +4,7 @@ import {ModalController, NavController, Platform} from '@ionic/angular';
 import {ProfileComponent} from '../../../components/profile/profile.component';
 import {Facebook} from '@ionic-native/facebook/ngx';
 import {Util} from '../../../system/generic/classes/util';
-import {COLOR_TOAST_ERROR, COLOR_TOAST_PRIMARY} from '../../../system/generic/classes/constant';
+import {COLOR_TOAST_ERROR, COLOR_TOAST_PRIMARY, COLOR_TOAST_WARNING} from '../../../system/generic/classes/constant';
 
 @Component({
     selector: 'app-tab3',
@@ -34,16 +34,17 @@ export class SettingsPage implements OnInit {
     }
 
     salirSesion() {
+        this.svrStorage.eliminarTodo();
+        this.navCtrl.navigateRoot('login');
         if (this.platform.is('cordova')) {
             this.svrFB.logout().then(data => {
                 this.util.presentToast('Ha cerrardo sesion', COLOR_TOAST_PRIMARY);
             }, (error) => {
-                this.util.presentToast(error, COLOR_TOAST_ERROR);
+                this.util.presentToast('Ha cerrardo sesion', COLOR_TOAST_WARNING);
             });
-            this.svrStorage.eliminarTodo();
-            this.navCtrl.navigateRoot('login');
         }
     }
+
 
     ngOnInit() {
     }

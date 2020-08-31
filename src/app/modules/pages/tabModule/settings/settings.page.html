@@ -1,14 +1,6 @@
 <ion-header>
-    <ion-toolbar color="dark">
-        <ion-title>CONFIGURACIÓN</ion-title>
-        <ion-button ion-button color="primary"
-                    slot="end"
-                    *ngIf="!panelActivo"
-                    (click)="activarPanel(true)">Cancelar
-        </ion-button>
-    </ion-toolbar>
+    <app-imagen-usuario></app-imagen-usuario>
 </ion-header>
-
 <ion-content color="dark">
     <ion-list *ngIf="panelActivo">
         <ion-item (click)="activarPanel(false)" color="dark">
@@ -21,7 +13,6 @@
                 Salir
             </ion-label>
         </ion-item>
-
     </ion-list>
     <!--<app-profile *ngIf="!panelActivo">
 

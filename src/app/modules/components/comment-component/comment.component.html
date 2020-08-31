@@ -1,5 +1,5 @@
 <ion-content color="dark">
-    <div class="comment-box">
+    <div>
         <ion-card *ngFor="let comment of lsComentarios" color="dark">
             <div *ngIf="comment.persona.displayName">
                 <ion-item color="dark">
@@ -31,18 +31,15 @@
             </div>
         </ion-card>
     </div>
-    <ion-footer padding>
-        <ion-textarea [(ngModel)]="message" type="text" placeholder="Comentar .... "></ion-textarea>
-        <ion-button [disabled]="!message" color="success" (click)="registrarComentario(message); message= null"
-                    expand="block">Enviar
-        </ion-button>
-        <ion-button color="primary" (click)="cerrarMoal()" expand="block">Cancelar</ion-button>
-        <!--  <ion-button size="small" float-left >
-              Regresar
-          </ion-button>
-          <ion-button  color="success" size="small" float-right
-                      >
-              Enviar
-          </ion-button>-->
-    </ion-footer>
 </ion-content>
+<ion-footer padding color="dark">
+    <ion-textarea [(ngModel)]="message" type="text" placeholder="Comentar .... "></ion-textarea>
+    <ion-button [disabled]="!message" color="success" (click)="registrarComentario(message); message= null"
+                expand="block">Enviar comentario
+        <ion-icon name="send"></ion-icon>
+    </ion-button>
+    <ion-button color="primary" (click)="cerrarMoal()" expand="block">Regresar
+        <ion-icon name="arrow-back"></ion-icon>
+    </ion-button>
+</ion-footer>
+

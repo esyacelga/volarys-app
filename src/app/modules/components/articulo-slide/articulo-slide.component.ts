@@ -53,30 +53,12 @@ export class ArticuloSlideComponent implements OnInit {
         await modal.present();
         const {data} = await modal.onDidDismiss();
         this.lstArticulo = (await this.svrArticulo.obtenerArticulos() as Array<Articulo>);
-        /*   if (data && data.objArt && data.objArt.conteoComentarios) {
-               this.conteoComentarios = new Observable<number>((observer: Subscriber<number>) => {
-                   observer.next(data.objArt.conteoComentarios);
-               });
-           }*/
-        /*     if (data && data.objArt && data.objArt.conteoComentarios) {
-                 for (let i = 0; this.lstArticulo.length > 0; i++) {
-                     if (this.lstArticulo[i]._id === data.objArt._id) {
-                         this.lstArticulo[i] = data.objArt;
-                     }
-                 }
-             }*/
     }
 
     public async actualizarLike(item: Articulo, like: boolean) {
         let objLike: LikeDislike = new LikeDislike(this.modeloPersonaTipoUsuario.persona, item, like, true);
         objLike = (await this.svrLike.registar(objLike) as LikeDislike);
-        this.lstArticulo = (await this.svrArticulo.obtenerArticulos() as Array<Articulo>);
-        /*   this.conteoLike = new Observable<number>((observer: Subscriber<number>) => {
-               observer.next(objLike.articulo.conteoLike);
-           });
-           this.conteoDisLike = new Observable<number>((observer: Subscriber<number>) => {
-               observer.next(objLike.articulo.conteoDisLike);
-           });*/
+        this.lstArticulo = (await this.svrArticulo.obtenerArticulosSinloading() as Array<Articulo>);
         return objLike.articulo;
     }
 

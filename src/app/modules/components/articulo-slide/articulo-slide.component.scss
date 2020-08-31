@@ -1,10 +1,15 @@
-ion-card-content {
+/*ion-card-content {
   color: #4c8dff !important;
 }
 
-div.swiper-pagination {
-  top:20px;
-  bottom:inherit;
+
+
+*/
+
+.card-center{
+  width:90%; // adjust width on your ion-card suitable on your screen
+  display:block;
+  margin: 0 auto;
 }
 .image-slide {
   width: 100%;
@@ -12,12 +17,9 @@ div.swiper-pagination {
 
   // background-color: red;
 
-  /* Full height */
   // height: 100%;
 
-  /* Imagen centrada y colocada de forma elegante */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
-

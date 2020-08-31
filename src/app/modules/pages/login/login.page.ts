@@ -19,7 +19,7 @@ import {LoginService} from '../../services/persona/login.service';
 import {GoogleObject} from '../../classes/login/GoogleObject';
 import {environment} from '../../../../environments/environment';
 import {Usuario} from '../../interfaces/interfaces';
-import {LoadingService} from "../../system/generic/service/loading.service";
+import {LoadingService} from '../../system/generic/service/loading.service';
 
 @Component({
     selector: 'app-login',
@@ -43,27 +43,47 @@ export class LoginPage implements OnInit {
         nombre: '',
         avatar: ''
     };
-
-
-    // @ts-ignore
     @ViewChild('slidePrincipal') slides: IonSlides;
+
+    constructor(private formFuilder: FormBuilder, private  util: Util,
+                private svrLogin: LoginService,
+                private svrUsuario: UsuarioService,
+                private navCtrl: NavController,
+                private svrRoute: Router,
+                protected loading: LoadingService,
+                private svrStorage: StorageAppService,
+                private svtNotificacion: PushNotificationService,
+                private platform: Platform,
+                private svrSector: SectorService, private svrTipoUsuario: TipoUsuarioService,
+                private svtTipoUsuariPersona: TipoUsuarioPersonaService) {
+        this.construirFormRegistro();
+        this.construirFormLogin();
+    }
 
 
     async loginFaceBook() {
-        await this.loading.present('messagesService.loadMessagesOverview', 'Procesando...');
-        const objUsuario: GoogleObject = (await this.svrLogin.loginWithFaceBook() as GoogleObject);
-        this.loading.dismiss('messagesService.loadMessagesOverview');
-        if (objUsuario) {
-            await this.validarLogin(objUsuario);
+        if (this.platform.is('cordova')) {
+            await this.loading.present('messagesService.loadMessagesOverview', 'Procesando...');
+            const objUsuario: GoogleObject = (await this.svrLogin.loginWithFaceBook() as GoogleObject);
+            this.loading.dismiss('messagesService.loadMessagesOverview');
+            if (objUsuario) {
+                await this.validarLogin(objUsuario);
+            }
+        } else {
+            this.util.presentToast('Opcion no disponible desde la WEB', COLOR_TOAST_WARNING);
         }
     }
 
     async loginGoogle() {
-        await this.loading.present('messagesService.loadMessagesOverview', 'Procesando...');
-        const objUsuario: GoogleObject = (await this.svrLogin.loginWithGoogle() as GoogleObject);
-        this.loading.dismiss('messagesService.loadMessagesOverview');
-        if (objUsuario) {
-            await this.validarLogin(objUsuario);
+        if (this.platform.is('cordova')) {
+            await this.loading.present('messagesService.loadMessagesOverview', 'Procesando...');
+            const objUsuario: GoogleObject = (await this.svrLogin.loginWithGoogle() as GoogleObject);
+            this.loading.dismiss('messagesService.loadMessagesOverview');
+            if (objUsuario) {
+                await this.validarLogin(objUsuario);
+            }
+        } else {
+            this.util.presentToast('Opcion no disponible desde la WEB', COLOR_TOAST_WARNING);
         }
     }
 
@@ -197,20 +217,6 @@ export class LoginPage implements OnInit {
         }, {validators: this.isEquals('clave', 'passwordValidator')});
     }
 
-    constructor(private formFuilder: FormBuilder, private  util: Util,
-                private svrLogin: LoginService,
-                private svrUsuario: UsuarioService,
-                private navCtrl: NavController,
-                private svrRoute: Router,
-                protected loading: LoadingService,
-                private svrStorage: StorageAppService,
-                private svtNotificacion: PushNotificationService,
-                private platform: Platform,
-                private svrSector: SectorService, private svrTipoUsuario: TipoUsuarioService,
-                private svtTipoUsuariPersona: TipoUsuarioPersonaService) {
-        this.construirFormRegistro();
-        this.construirFormLogin();
-    }
 
     ngOnInit(): void {
 
