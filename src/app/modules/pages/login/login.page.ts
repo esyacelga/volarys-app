@@ -117,19 +117,6 @@ export class LoginPage implements OnInit {
 
     }
 
-    async registerNewUser() {
-        if (this.registerUser.avatar === '' || this.registerUser.avatar === null) {
-            this.registerUser.avatar = 'av-1.png';
-        }
-        const usuarioApp = this.loginForm.value;
-        usuarioApp.tipoUsuario = this.objTipoUsuario._id;
-        usuarioApp.avatar = this.registerUser.avatar;
-        const data = await this.svtTipoUsuariPersona.registar(usuarioApp);
-        if (data) {
-            this.mostrarLogin();
-        }
-
-    }
 
     async login() {
         if (this.ingresoForm.status === 'INVALID') {
@@ -229,7 +216,6 @@ export class LoginPage implements OnInit {
         this.lstSectores = await this.svrSector.obtenerSectores();
         // @ts-ignore
         this.objTipoUsuario = await this.svrTipoUsuario.buscarRegistro('descripcion', 'CLIENTE');
-        this.slides.lockSwipes(true);
     }
 
     isEquals(campo: string, campoToValidate: string) {
@@ -244,19 +230,6 @@ export class LoginPage implements OnInit {
                 };
             }
         };
-    }
-
-
-    mostrarRegistro() {
-        this.slides.lockSwipes(false);
-        this.slides.slideTo(1);
-        this.slides.lockSwipes(true);
-    }
-
-    mostrarLogin() {
-        this.slides.lockSwipes(false);
-        this.slides.slideTo(0);
-        this.slides.lockSwipes(true);
     }
 
 

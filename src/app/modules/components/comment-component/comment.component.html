@@ -1,45 +1,42 @@
 <ion-content color="dark">
-    <div>
-        <ion-card *ngFor="let comment of lsComentarios" color="dark">
-            <div *ngIf="comment.persona.displayName">
-                <ion-item color="dark">
-                    <ion-avatar slot="start" *ngIf="comment.persona && comment.persona.picture">
-                        <img [src]="comment.persona.picture|urlSanitizer">
-                    </ion-avatar>
-                    <small>{{comment.persona.displayName}}</small>
-                    <ion-grid>
-                        <ion-row>
-                            <ion-col>
-                                <div class="ion-text-end">
-                                    <small>{{comment.creacionFecha | date : 'MM/dd/yy H:mm a'}}</small>
-                                </div>
-                            </ion-col>
-                        </ion-row>
-                    </ion-grid>
-                    <ion-buttons slot="end" *ngIf="comment.persona._id === objTipoUsuarioPersona.persona._id">
-                        <ion-button slot="end" color="danger" (click)="eliminarComentario(comment)">
-                            <ion-icon slot="icon-only" name="trash">
-                            </ion-icon>
-                        </ion-button>
-                    </ion-buttons>
-                </ion-item>
-                <ion-card-content color="dark">
-                    <ion-label>
-                        {{comment.comentario}}
-                    </ion-label>
-                </ion-card-content>
-            </div>
-        </ion-card>
-    </div>
+    <ion-card *ngFor="let comment of lsComentarios" color="dark">
+        <div *ngIf="comment.persona.displayName">
+            <ion-item color="dark">
+                <ion-avatar slot="start" *ngIf="comment.persona && comment.persona.picture">
+                    <img [src]="comment.persona.picture|urlSanitizer">
+                </ion-avatar>
+                <small>{{comment.persona.displayName}}</small>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col>
+                            <div class="ion-text-end">
+                                <small>{{comment.creacionFecha | date : 'MM/dd/yy H:mm a'}}</small>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+                <ion-buttons slot="end" *ngIf="comment.persona._id === objTipoUsuarioPersona.persona._id">
+                    <ion-button slot="end" color="danger" (click)="eliminarComentario(comment)">
+                        <ion-icon slot="icon-only" name="trash">
+                        </ion-icon>
+                    </ion-button>
+                </ion-buttons>
+            </ion-item>
+            <ion-card-content color="dark">
+                <ion-label>
+                    {{comment.comentario}}
+                </ion-label>
+            </ion-card-content>
+        </div>
+    </ion-card>
 </ion-content>
-<ion-footer padding color="dark">
+<ion-card color="dark">
     <ion-textarea [(ngModel)]="message" type="text" placeholder="Comentar .... "></ion-textarea>
     <ion-button [disabled]="!message" color="success" (click)="registrarComentario(message); message= null"
                 expand="block">Enviar comentario
-        <ion-icon name="send"></ion-icon>
+        <!--<ion-icon name="send"></ion-icon>-->
     </ion-button>
     <ion-button color="primary" (click)="cerrarMoal()" expand="block">Regresar
-        <ion-icon name="arrow-back"></ion-icon>
+        <!--<ion-icon name="arrow-back"></ion-icon>-->
     </ion-button>
-</ion-footer>
-
+</ion-card>
