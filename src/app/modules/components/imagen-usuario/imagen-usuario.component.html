@@ -1,9 +1,12 @@
-<ion-item color="dark">
+<ion-item color="primary">
     <h6 slot="end">
         <small>
             {{displayName}}
         </small>
     </h6>
+    <ion-avatar slot="start">
+        <img src="/assets/avatars/logo-volarys.png">
+    </ion-avatar>
     <ion-avatar slot="end" *ngIf="photo">
         <img [src]="photo |urlSanitizer">
     </ion-avatar>

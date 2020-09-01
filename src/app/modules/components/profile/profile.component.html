@@ -104,19 +104,17 @@
             </ion-col>
         </ion-row>
 
-        <ion-row>
-            <ion-col>
-                <ion-button
-                        type="submit"
-                        color="tertiary"
-                        expand="block">Actualizar Perfil
-                </ion-button>
-                <ion-button (click)="cerrrarPanel()"
-                            color="tertiary"
-                            expand="block">Cancelar
-                </ion-button>
 
-            </ion-col>
-        </ion-row>
     </form>
 </ion-content>
+<ion-footer>
+    <ion-button
+            type="submit"
+            color="warning"
+            expand="block">Actualizar Perfil
+    </ion-button>
+    <ion-button (click)="cerrrarPanel()"
+                color="primary"
+                expand="block">Cancelar
+    </ion-button>
+</ion-footer>

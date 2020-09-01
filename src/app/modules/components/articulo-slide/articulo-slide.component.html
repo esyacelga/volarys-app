@@ -1,7 +1,7 @@
 <ion-slides pager="true" *ngIf="lstArticulo">
     <ion-slide *ngFor="let data of lstArticulo | segmentoArticulo:segmento">
         <ion-grid fixed>
-            <ion-card size-md="12" size-sm="12" size-xs="12" color="dark">
+            <ion-card size-md="12" size-sm="12" size-xs="12" color="secondary">
                 <ion-card-header>
                     <ion-card-subtitle>{{segmento.descripcion | uppercase}}</ion-card-subtitle>
                 </ion-card-header>
@@ -18,7 +18,7 @@
                         <h3>{{data.descripcion | uppercase}}</h3>
                         <p>Costo Servicio: {{data.unidadCosto}}</p>
                     </ion-label>
-                    <ion-button color="tertiary" (click)="seleccionarArticulo(data)" expand="block">SOLICITAR
+                    <ion-button color="warning" (click)="seleccionarArticulo(data)" expand="block">SOLICITAR
                     </ion-button>
                 </div>
 
@@ -30,7 +30,7 @@
                     <ion-card-content class="card-center">
                         {{data.obsevacion}}
                     </ion-card-content>
-                    <ion-button color="tertiary" (click)="seleccionarArticulo(data)" expand="block">SOLICITAR
+                    <ion-button color="warning" (click)="seleccionarArticulo(data)" expand="block">SOLICITAR
                     </ion-button>
                 </div>
 

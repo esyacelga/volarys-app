@@ -2,7 +2,13 @@ ion-button ion-icon {
   position: absolute;
   left: 10px;
 }
+/*ion-button {
+  --background: #41e94b;
+}*/
 
+.btncolor {
+  --background: var(--ion-color-btn);
+}
 .line-input {
   margin-bottom: 0 !important;
 
