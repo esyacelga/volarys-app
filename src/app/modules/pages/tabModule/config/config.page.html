@@ -8,15 +8,20 @@
                 <ion-avatar slot="start">
                     <img [src]="notificacion.picture|urlSanitizer">
                 </ion-avatar>
-                <small>{{notificacion.displayName}}{{',  '}}{{notificacion.titulo}}</small>
+                <strong>
+                    <small>{{notificacion.displayName}}{{',  '}}{{notificacion.titulo}}</small>
+                </strong>
             </ion-item>
             <ion-item color="light">
-                <small>Hacerca del servicio de:{{' '}}{{notificacion.nombreSegmentro}}</small>
+                <strong>
+                    <small>para:{{' '}}{{notificacion.nombreSegmento |uppercase }}</small>
+                </strong>
                 <ion-avatar slot="end">
                     <img [src]="(notificacion.portada | imagen: notificacion.idSegmento )| urlSanitizer">
                 </ion-avatar>
             </ion-item>
             <ion-card-content>
+
                 <small>
                     {{notificacion.mensaje}}
                 </small>
@@ -27,12 +32,16 @@
                 <ion-avatar slot="start">
                     <img [src]="notificacion.picture|urlSanitizer">
                 </ion-avatar>
-                <small>{{notificacion.displayName}}{{',  '}}{{notificacion.titulo}}</small>
+                <strong>
+                    <small>{{notificacion.displayName}}{{',  '}}{{notificacion.titulo}}</small>
+                </strong>
                 <ion-icon *ngIf="notificacion.like" name="thumbs-up"></ion-icon>
                 <ion-icon *ngIf="!notificacion.like" name="thumbs-down"></ion-icon>
             </ion-item>
             <ion-item color="light">
-                <small>Hacerca del servicio de:{{' '}}{{notificacion.nombreSegmentro | uppercase}}</small>
+                <strong>
+                    <small>con:{{' '}}{{notificacion.nombreSegmento | uppercase}}</small>
+                </strong>
                 <ion-avatar slot="end">
                     <img [src]="(notificacion.portada | imagen: notificacion.idSegmento )| urlSanitizer">
                 </ion-avatar>
@@ -58,7 +67,7 @@
             </ion-card-content>
         </div>
 
-        <div *ngIf="notificacion.tipoNotificacon===3 && notificacion.playerId === playerId" >
+        <div *ngIf="notificacion.tipoNotificacon===3 && notificacion.playerId === playerId">
             <ion-item color="light">
                 <ion-avatar slot="start">
                     <img src="/assets/avatars/logo-volarys.png">
@@ -67,9 +76,6 @@
                     <small>Volarys</small>
                 </strong>
             </ion-item>
-            <!--<ion-item color="light">
-                <small>Hacerca del servicio de:{{' '}}{{notificacion.nombreSegmentro}}</small>
-            </ion-item>-->
             <ion-card-content>
                 <small>
                     {{notificacion.mensaje}}
@@ -77,38 +83,5 @@
             </ion-card-content>
         </div>
     </ion-card>
-
-    <!--
-        <ion-list>
-            <ion-item *ngFor="let notificacion of lsNotificaciones">
-                <ion-avatar slot="start">
-                    <img [src]="notificacion.picture|urlSanitizer">
-                </ion-avatar>
-                <ion-label>
-                    <h2>{{notificacion.displayName}}</h2>
-                    <h3>{{notificacion.titulo}}</h3>
-                    <p>Listen, I've had a pretty messed up day...</p>
-                </ion-label>
-                <ion-avatar slot="end">
-                    <img [src]="notificacion.picture|urlSanitizer">
-                </ion-avatar>
-            </ion-item>
-        </ion-list>
-    -->
 </ion-content>
 
-<!--    <ion-list *ngIf="panelActivo">
-        <ion-item (click)="activarPanel(false)" color="dark">
-            <ion-label>
-                Actualizar Perfil
-            </ion-label>
-        </ion-item>
-        <ion-item (click)="salirSesion()" color="dark">
-            <ion-label>
-                Salir
-            </ion-label>
-        </ion-item>
-    </ion-list>-->
-<!--<app-profile *ngIf="!panelActivo">
-
-</app-profile>-->
