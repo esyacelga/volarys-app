@@ -16,12 +16,12 @@
 </ion-header>
 <ion-content color="dark">
 
-    <app-item-seleccionado size="12" size-lg="12" size-md="12" size-sm="12" size-xs="12"
+    <app-item-seleccionado
                            *ngIf="tipoArticulo" [tipoArticulo]="tipoArticulo">
     </app-item-seleccionado>
     <ion-grid fixed>
         <ion-row>
-            <ion-col size="12" size-lg="3" size-md="4" size-sm="6" size-xs="12"
+            <ion-col size="12" sizeLg="3" sizeMd="4" sizeSm="6" sizeXs="12"
                      [hidden]="tipoArticulo" *ngFor="let item of lstTipoArticulo">
                 <ion-card (click)="selecionar(item)" color="secondary">
                     <ion-card-header>
