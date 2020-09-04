@@ -1,4 +1,8 @@
-<div *ngFor="let item of lstSegmento">
-    <app-articulo-slide [segmento]="item" [lstArticulo]="lstArticulo"></app-articulo-slide>
-</div>
+<ion-grid>
+    <ion-row>
+        <ion-col *ngFor="let item of lstSegmento" sizeXs="12" sizeSm="6" size="12" sizeMd="4" sizeLg="6" sizeXl="3">
+            <app-articulo-slide [segmento]="item" [lstArticulo]="lstArticulo"></app-articulo-slide>
+        </ion-col>
+    </ion-row>
+</ion-grid>
 

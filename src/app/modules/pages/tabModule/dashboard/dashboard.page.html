@@ -11,17 +11,17 @@
         </ion-item>
     </ion-toolbar>
 </ion-header>
-<ion-header *ngIf="!tipoArticulo">
+<ion-header *ngIf="!tipoArticulo" translucent>
     <app-imagen-usuario></app-imagen-usuario>
 </ion-header>
-<ion-content color="dark">
+<ion-content color="dark" fullscreen>
 
     <app-item-seleccionado
-                           *ngIf="tipoArticulo" [tipoArticulo]="tipoArticulo">
+            *ngIf="tipoArticulo" [tipoArticulo]="tipoArticulo">
     </app-item-seleccionado>
-    <ion-grid fixed>
+    <ion-grid>
         <ion-row>
-            <ion-col size="12" sizeLg="3" sizeMd="4" sizeSm="6" sizeXs="12"
+            <ion-col sizeXs="12" sizeSm="6" size="12" sizeMd="4" sizeLg="6" sizeXl="3"
                      [hidden]="tipoArticulo" *ngFor="let item of lstTipoArticulo">
                 <ion-card (click)="selecionar(item)" color="secondary">
                     <ion-card-header>
