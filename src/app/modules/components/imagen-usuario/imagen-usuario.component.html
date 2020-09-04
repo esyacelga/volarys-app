@@ -7,7 +7,8 @@
     <ion-avatar slot="start">
         <img src="/assets/avatars/logo-volarys.png">
     </ion-avatar>
-    <ion-avatar slot="end" *ngIf="photo">
+    <ion-avatar slot="end" *ngIf="photo" (click)="seleccionarPaginaSettings()">
         <img [src]="photo |urlSanitizer">
     </ion-avatar>
+
 </ion-item>

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {StorageAppService} from '../../system/generic/service/storage-app.service';
 import {ModeloTipoUsuarioPersona} from '../../classes/persona/TipoUsuarioPersona';
+import {NavController} from "@ionic/angular";
 
 @Component({
     selector: 'app-imagen-usuario',
@@ -12,7 +13,11 @@ export class ImagenUsuarioComponent implements OnInit {
     photo = '';
     displayName = '';
 
-    constructor(private svrStorage: StorageAppService) {
+    constructor(private svrStorage: StorageAppService, private nvrServ: NavController) {
+    }
+
+    seleccionarPaginaSettings() {
+        this.nvrServ.navigateForward('main/tabs/settings');
     }
 
     async ngOnInit() {
