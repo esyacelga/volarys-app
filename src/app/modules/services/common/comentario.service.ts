@@ -2,7 +2,12 @@ import {Injectable} from '@angular/core';
 import {Articulo} from '../../classes/mensajeria/Articulo';
 import {ExecuteCallProcedureService} from '../../system/generic/service/execute-call-procedure.service';
 import {RequestOptions} from '../../system/generic/classes/RequestOptions';
-import {CRUD_COMENTARIO, CRUD_COMENTARIO_ELIMINADO, OBTENER_COMENTARIOS} from '../../constantes/ConstanteTransaccional';
+import {
+    CRUD_COMENTARIO,
+    CRUD_COMENTARIO_ELIMINADO,
+    OBTENER_COMENTARIOS,
+    OBTENER_TODOS_NOTIFICACIONES
+} from '../../constantes/ConstanteTransaccional';
 import {ItemComment} from '../../classes/common/ItemComment';
 import {COLOR_TOAST_SUCCESS} from '../../system/generic/classes/constant';
 
@@ -38,6 +43,11 @@ export class ComentarioService {
     async obtenerComentariosPorArticulo(objArticulo: Articulo) {
         const requestOptions = new RequestOptions();
         return (await this.genericService.servicioRestGenericoGet(objArticulo, OBTENER_COMENTARIOS, requestOptions) as ItemComment[]);
+    }
+
+    async obtenerTodosNotificaciones() {
+        const requestOptions = new RequestOptions();
+        return (await this.genericService.servicioRestGenericoGet({}, OBTENER_TODOS_NOTIFICACIONES, requestOptions) as ItemComment[]);
     }
 
 }

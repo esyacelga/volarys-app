@@ -16,6 +16,7 @@ export const CRUD_COMENTARIO_ELIMINADO = 'commentario/eliminar';
 export const CRUD_LIKE_DISLIKE = 'likeDislike';
 
 export const OBTENER_COMENTARIOS = 'commentario/obtenerTodos';
+export const OBTENER_TODOS_NOTIFICACIONES = 'commentario/ObtenerTodosNotificaciones';
 export const CRUD_ARTICULO_SIMPLE = 'articulo/registrarArticulo';
 
 export const CRUD_USUARIO = 'usuario';

@@ -1,10 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {StorageAppService} from '../../../system/generic/service/storage-app.service';
 import {ModalController, NavController, Platform} from '@ionic/angular';
-import {ProfileComponent} from '../../../components/profile/profile.component';
-import {Facebook} from '@ionic-native/facebook/ngx';
 import {Util} from '../../../system/generic/classes/util';
-import {COLOR_TOAST_ERROR, COLOR_TOAST_PRIMARY, COLOR_TOAST_WARNING} from '../../../system/generic/classes/constant';
+import {ComentarioService} from '../../../services/common/comentario.service';
+import {NotificacionMensajeDto} from '../../../interfaces/interfaces';
 
 @Component({
     selector: 'app-tab3',
@@ -14,39 +13,47 @@ import {COLOR_TOAST_ERROR, COLOR_TOAST_PRIMARY, COLOR_TOAST_WARNING} from '../..
 export class SettingsPage implements OnInit {
 
     panelActivo = true;
+    public lsNotificaciones: NotificacionMensajeDto[] = [];
 
     constructor(private svrStorage: StorageAppService,
                 private modalCtrl: ModalController,
                 private platform: Platform,
-                private svrFB: Facebook,
+                private svrComment: ComentarioService,
                 private util: Util,
                 private navCtrl: NavController) {
     }
 
-    async activarPanel(opcion: boolean) {
-        const modal = await this.modalCtrl.create({
-            component: ProfileComponent,
-            componentProps: {title: 's', tipoError: 's', mensaje: 'mensajeError'}
-        });
-        await modal.present();
-        const {data} = await modal.onDidDismiss();
-
+    async ionViewDidEnter() {
+        this.lsNotificaciones = (await this.svrComment.obtenerTodosNotificaciones() as unknown as NotificacionMensajeDto[]);
     }
 
-    salirSesion() {
-        this.svrStorage.eliminarTodo();
-        this.navCtrl.navigateRoot('login');
-        if (this.platform.is('cordova')) {
-            this.svrFB.logout().then(data => {
-                this.util.presentToast('Ha cerrardo sesion', COLOR_TOAST_PRIMARY);
-            }, (error) => {
-                this.util.presentToast('Ha cerrardo sesion', COLOR_TOAST_WARNING);
+    /*
+        async activarPanel(opcion: boolean) {
+            const modal = await this.modalCtrl.create({
+                component: ProfileComponent,
+                componentProps: {title: 's', tipoError: 's', mensaje: 'mensajeError'}
             });
+            await modal.present();
+            const {data} = await modal.onDidDismiss();
+
         }
+
+        salirSesion() {
+            this.svrStorage.eliminarTodo();
+            this.navCtrl.navigateRoot('login');
+            if (this.platform.is('cordova')) {
+                this.svrFB.logout().then(data => {
+                    this.util.presentToast('Ha cerrardo sesion', COLOR_TOAST_PRIMARY);
+                }, (error) => {
+                    this.util.presentToast('Ha cerrardo sesion', COLOR_TOAST_WARNING);
+                });
+            }
+        }
+
+
+
+    */
+    async ngOnInit() {
+      //  this.lsNotificaciones = (await this.svrComment.obtenerTodosNotificaciones() as unknown as NotificacionMensajeDto[]);
     }
-
-
-    ngOnInit() {
-    }
-
 }
