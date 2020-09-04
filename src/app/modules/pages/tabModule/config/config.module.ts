@@ -3,7 +3,7 @@ import {RouterModule} from '@angular/router';
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
-import {SettingsPage} from './settings.page';
+import {ConfigPage} from './config.page';
 import {ComponentModule} from '../../../components/component.module';
 import {PipesModule} from '../../../pipes/pipes.module';
 
@@ -14,10 +14,11 @@ import {PipesModule} from '../../../pipes/pipes.module';
         PipesModule,
         ComponentModule,
         FormsModule,
-        RouterModule.forChild([{path: '', component: SettingsPage}])
+        RouterModule.forChild([{path: '', component: ConfigPage}])
     ],
-    declarations: [SettingsPage],
+    declarations: [ConfigPage],
     entryComponents: []
 })
-export class SettingsModule {
+
+export class ConfigModule {
 }

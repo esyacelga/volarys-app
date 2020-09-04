@@ -27,13 +27,14 @@ const routes: Routes = [
                     }
                 ]
             },
+
             {
                 path: 'settings',
                 children: [
                     {
                         path: '',
                         loadChildren: () =>
-                            import('../settings/settings.module').then(m => m.SettingsModule)
+                            import('../config/config.module').then(m => m.ConfigModule)
                     }
                 ]
             },

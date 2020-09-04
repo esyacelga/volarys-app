@@ -8,10 +8,10 @@ import {ModeloTipoUsuarioPersona} from '../../../classes/persona/TipoUsuarioPers
 
 @Component({
     selector: 'app-tab3',
-    templateUrl: 'settings.page.html',
-    styleUrls: ['settings.page.scss']
+    templateUrl: 'config.page.html',
+    styleUrls: ['config.page.scss']
 })
-export class SettingsPage implements OnInit {
+export class ConfigPage implements OnInit {
 
     public playerId: string;
     public lsNotificaciones: NotificacionMensajeDto[] = [];
