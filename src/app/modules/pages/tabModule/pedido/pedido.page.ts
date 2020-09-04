@@ -5,14 +5,14 @@ import {StorageAppService} from '../../../system/generic/service/storage-app.ser
 import {PushNotificationService} from '../../../system/generic/service/push-notification.service';
 import {MensajeOneSignal} from '../../../system/generic/classes/MensajeOneSignal';
 import {ObjetoTipoUsuarioPersona} from '../../../classes/persona/ObjetoTipoUsuarioPersona';
-import {GRUPO_ADMINISTRADOR, GRUPO_CLIENTE} from '../../../system/generic/classes/constant';
+import {GRUPO_ADMINISTRADOR} from '../../../system/generic/classes/constant';
 
 @Component({
     selector: 'app-tab2',
-    templateUrl: 'tab2.page.html',
-    styleUrls: ['tab2.page.scss']
+    templateUrl: 'pedido.page.html',
+    styleUrls: ['pedido.page.scss']
 })
-export class Tab2Page implements OnInit {
+export class PedidoPage implements OnInit {
 
     lstDetalle: SolcitudDetalleModel[] = [];
     sumatoria = 0;

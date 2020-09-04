@@ -6,10 +6,10 @@ import {ModeloTipoUsuarioPersona} from '../../../classes/persona/TipoUsuarioPers
 
 @Component({
     selector: 'app-tab1',
-    templateUrl: 'tab1.page.html',
-    styleUrls: ['tab1.page.scss']
+    templateUrl: 'dashboard.page.html',
+    styleUrls: ['dashboard.page.scss']
 })
-export class Tab1Page implements OnInit {
+export class DashboardPage implements OnInit {
 
     articulo: Articulo;
     tipoArticulo: TipoArticulo;

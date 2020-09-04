@@ -3,8 +3,8 @@ import {RouterModule} from '@angular/router';
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
-import {Tab1Page} from './tab1.page';
 import {ComponentModule} from '../../../components/component.module';
+import {DashboardPage} from './dashboard.page';
 
 @NgModule({
     imports: [
@@ -12,9 +12,9 @@ import {ComponentModule} from '../../../components/component.module';
         IonicModule,
         CommonModule,
         FormsModule,
-        RouterModule.forChild([{path: '', component: Tab1Page}])
+        RouterModule.forChild([{path: '', component: DashboardPage}])
     ],
-    declarations: [Tab1Page]
+    declarations: [DashboardPage]
 })
 export class Tab1PageModule {
 }
