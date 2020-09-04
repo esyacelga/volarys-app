@@ -4,26 +4,26 @@ export class NotificacionMensajeDto {
     public picture: string;
     public titulo: string;
     public mensaje: string;
-    public idPersona: string;
+    public playerId: string;
     public tipoNotificacon: number;
     public portada: string;
     public idSegmento: string;
-    public nombreSegmentro: string;
+    public nombreSegmento: string;
     public like: boolean;
 
     constructor(id: string, displayName: string, picture: string, titulo: string, mensaje: string,
-                idPersona: string, tipoNotificacon: number, portada: string,
-                idSegmento: string, nombreSegmentro: string, like: boolean) {
+                playerId: string, tipoNotificacon: number, portada: string,
+                idSegmento: string, nombreSegmento: string, like: boolean) {
         this._id = id;
         this.displayName = displayName;
         this.picture = picture;
         this.titulo = titulo;
         this.mensaje = mensaje;
-        this.idPersona = idPersona;
+        this.playerId = playerId;
         this.tipoNotificacon = tipoNotificacon;
         this.portada = portada;
         this.idSegmento = idSegmento;
-        this.nombreSegmentro = nombreSegmentro;
+        this.nombreSegmento = nombreSegmento;
         this.like = like;
     }
 }

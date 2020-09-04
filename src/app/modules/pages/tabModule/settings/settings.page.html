@@ -38,6 +38,44 @@
                 </ion-avatar>
             </ion-item>
         </div>
+
+        <div *ngIf="notificacion.tipoNotificacon===2">
+            <ion-item color="light">
+                <ion-avatar slot="start">
+                    <img src="/assets/avatars/logo-volarys.png">
+                </ion-avatar>
+                <strong>
+                    <small>Volarys</small>
+                </strong>
+            </ion-item>
+            <!--<ion-item color="light">
+                <small>Hacerca del servicio de:{{' '}}{{notificacion.nombreSegmentro}}</small>
+            </ion-item>-->
+            <ion-card-content>
+                <small>
+                    {{notificacion.mensaje}}
+                </small>
+            </ion-card-content>
+        </div>
+
+        <div *ngIf="notificacion.tipoNotificacon===3 && notificacion.playerId === playerId" >
+            <ion-item color="light">
+                <ion-avatar slot="start">
+                    <img src="/assets/avatars/logo-volarys.png">
+                </ion-avatar>
+                <strong>
+                    <small>Volarys</small>
+                </strong>
+            </ion-item>
+            <!--<ion-item color="light">
+                <small>Hacerca del servicio de:{{' '}}{{notificacion.nombreSegmentro}}</small>
+            </ion-item>-->
+            <ion-card-content>
+                <small>
+                    {{notificacion.mensaje}}
+                </small>
+            </ion-card-content>
+        </div>
     </ion-card>
 
     <!--
