@@ -10,8 +10,6 @@ import {PipesModule} from '../pipes/pipes.module';
 import {PedidosComponent} from './pedidos/pedidos.component';
 import {ProfileComponent} from './profile/profile.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {PhotoProfilePageModule} from '../pages/photo-profile/photo-profile.module';
-import {PhotoProfilePage} from '../pages/photo-profile/photo-profile.page';
 import {SolicitudRutaComponent} from './solicitud-ruta/solicitud-ruta.component';
 import {ImagenUsuarioComponent} from './imagen-usuario/imagen-usuario.component';
 import {CommentComponent} from './comment-component/comment.component';
@@ -34,9 +32,8 @@ import {ProfileModule} from './profile/profile.module';
         ReactiveFormsModule,
         IonicModule,
         ProfileModule,
-        PhotoProfilePageModule,
 
-    ], entryComponents: [PhotoProfilePage, CommentComponent, ProfileComponent]
+    ], entryComponents: [CommentComponent, ProfileComponent]
 })
 export class ComponentModule {
 }
