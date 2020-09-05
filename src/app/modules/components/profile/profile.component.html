@@ -53,14 +53,14 @@
                         <ion-select ngModel="modeloPersonaTipoUsuario.persona.sector" formControlName="sector"
                                     value="sector._id" okText="Okay" cancelText="Dismiss">
                             <ion-select-option *ngFor="let sector  of lstSectores"
-                                               value="{{sector._id}}">{{sector.descripcion}}
+                                               value="{{sector._id}}">{{sector.descripcion |uppercase}}
                             </ion-select-option>
                         </ion-select>
                     </ion-item>
 
 
                     <ion-item color="dark">
-                        <ion-label position="floating">Telefono celular</ion-label>
+                        <ion-label position="floating">Teléfono celular</ion-label>
                         <ion-input formControlName="numeroTelefonoCelular"></ion-input>
                     </ion-item>
                     <div class="error-messages">
@@ -73,7 +73,7 @@
                     </div>
 
                     <ion-item color="dark">
-                        <ion-label position="floating">Telefono convencional</ion-label>
+                        <ion-label position="floating">Teléfono convencional</ion-label>
                         <ion-input formControlName="numeroTelefonoConvencional"></ion-input>
                     </ion-item>
                     <div class="error-messages">
@@ -103,18 +103,17 @@
                 </ion-list>
             </ion-col>
         </ion-row>
-
-
+        <ion-footer>
+            <ion-button
+                    type="submit"
+                    color="warning"
+                    expand="block">Actualizar Perfil
+            </ion-button>
+            <ion-button (click)="cerrrarPanel()"
+                        color="primary"
+                        expand="block">Cancelar
+            </ion-button>
+        </ion-footer>
     </form>
 </ion-content>
-<ion-footer>
-    <ion-button
-            type="submit"
-            color="warning"
-            expand="block">Actualizar Perfil
-    </ion-button>
-    <ion-button (click)="cerrrarPanel()"
-                color="primary"
-                expand="block">Cancelar
-    </ion-button>
-</ion-footer>
+

@@ -14,7 +14,6 @@ import {LikeDislike} from '../../classes/common/LikeDislike';
 import {Observable} from 'rxjs';
 import {ArticuloService} from '../../services/mensajeria/articulo.service';
 import {ProfileComponent} from '../profile/profile.component';
-import {Pedido} from '../../classes/mensajeria/Pedido';
 
 @Component({
     selector: 'app-articulo-slide',
@@ -74,9 +73,11 @@ export class ArticuloSlideComponent implements OnInit {
 
     async seleccionarArticulo(item: Articulo) {
         this.objArticulo = item;
+/*
         const lstPedido: Pedido[] = (await this.svrSolicitud.obtenerPedidoPorUsuario(this.modeloPersonaTipoUsuario.usuario._id) as Pedido[]);
+*/
         this.modeloPersonaTipoUsuario = (await this.svrStorage.loadStorageObject('usuario')) as ModeloTipoUsuarioPersona;
-        if (lstPedido.length === 0 && !(this.modeloPersonaTipoUsuario.persona.fechaNacimiento)) {
+        if (!this.modeloPersonaTipoUsuario.persona.numeroTelefonoCelular) {
             this.utilSvr.presentToast('Para generar su primer pedido y mejorar nuestro servicio debe actualizar la informacion solicitada', COLOR_TOAST_PRIMARY);
             this.activarPanel();
             return;
@@ -91,7 +92,6 @@ export class ArticuloSlideComponent implements OnInit {
         }
 
         const art = new SolcitudDetalleModel(item._id, item.estado, item.descripcion, 1, item.unidadAlmacenada, item.unidadCosto);
-
         art.nombreArticulo = item.descripcion;
         this.svrSolicitud.setDetalleSolcitud(art);
         this.utilSvr.presentToast('Este artículo se ha agregado a su pedido', COLOR_TOAST_MORADO);
