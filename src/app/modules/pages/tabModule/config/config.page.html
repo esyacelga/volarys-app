@@ -3,25 +3,19 @@
 </ion-header>
 <ion-content fullscreen color="dark">
     <ion-card *ngFor="let notificacion of lsNotificaciones" color="light">
-        <div *ngIf="notificacion.tipoNotificacon===0">
+        <div *ngIf="notificacion.tipoNotificacon===0 && notificacion.esServicio">
             <ion-item color="light">
                 <ion-avatar slot="start">
                     <img [src]="notificacion.picture|urlSanitizer">
                 </ion-avatar>
                 <strong>
-                    <small>{{notificacion.displayName}}{{',  '}}{{notificacion.titulo}}</small>
-                </strong>
-            </ion-item>
-            <ion-item color="light">
-                <strong>
-                    <small>para:{{' '}}{{notificacion.nombreSegmento |uppercase }}</small>
+                    <small>{{notificacion.displayName}}{{', '}}{{notificacion.titulo}}{{' para: '}}{{notificacion.nombreSegmento|uppercase}}</small>
                 </strong>
                 <ion-avatar slot="end">
                     <img [src]="(notificacion.portada | imagen: notificacion.idSegmento )| urlSanitizer">
                 </ion-avatar>
             </ion-item>
             <ion-card-content>
-
                 <small>
                     {{notificacion.mensaje}}
                 </small>
@@ -29,19 +23,13 @@
         </div>
         <div *ngIf="notificacion.tipoNotificacon===1">
             <ion-item color="light">
-                <ion-avatar slot="start">
-                    <img [src]="notificacion.picture|urlSanitizer">
-                </ion-avatar>
-                <strong>
-                    <small>{{notificacion.displayName}}{{',  '}}{{notificacion.titulo}}</small>
-                </strong>
-                <ion-icon slot="end" *ngIf="notificacion.like" name="thumbs-up"></ion-icon>
-                <ion-icon slot="end" *ngIf="!notificacion.like" name="thumbs-down"></ion-icon>
-            </ion-item>
-            <ion-item color="light">
-                <strong>
-                    <small>con:{{' '}}{{notificacion.nombreSegmento | uppercase}}</small>
-                </strong>
+                <ion-icon slot="start" *ngIf="notificacion.like" name="thumbs-up"></ion-icon>
+                <ion-icon slot="start" *ngIf="!notificacion.like" name="thumbs-down"></ion-icon>
+                <small *ngIf="!notificacion.esServicio">{{notificacion.displayName}}{{',  '}}{{notificacion.titulo}}{{'  '}}{{notificacion.nombreSegmento| uppercase}}</small>
+
+                <small *ngIf="notificacion.esServicio && notificacion.like">{{notificacion.displayName}}{{', tubo experiencia positiva '}}{{' con el servicio de: '}} {{notificacion.nombreSegmento | uppercase}}</small>
+                <small *ngIf="notificacion.esServicio && !notificacion.like">{{notificacion.displayName}}{{', tubo experiencia negativa '}}{{' con el servicio de: '}} {{notificacion.nombreSegmento | uppercase}}</small>
+
                 <ion-avatar slot="end">
                     <img [src]="(notificacion.portada | imagen: notificacion.idSegmento )| urlSanitizer">
                 </ion-avatar>
@@ -54,12 +42,9 @@
                     <img src="/assets/avatars/logo-volarys.png">
                 </ion-avatar>
                 <strong>
-                    <small>Volarys</small>
+                    <small>Volarys indica: {{notificacion.idSegmento}} </small>
                 </strong>
             </ion-item>
-            <!--<ion-item color="light">
-                <small>Hacerca del servicio de:{{' '}}{{notificacion.nombreSegmentro}}</small>
-            </ion-item>-->
             <ion-card-content>
                 <small>
                     {{notificacion.mensaje}}
@@ -73,7 +58,7 @@
                     <img src="/assets/avatars/logo-volarys.png">
                 </ion-avatar>
                 <strong>
-                    <small>Volarys</small>
+                    <small>Volarys indica: {{notificacion.idSegmento}} </small>
                 </strong>
             </ion-item>
             <ion-card-content>

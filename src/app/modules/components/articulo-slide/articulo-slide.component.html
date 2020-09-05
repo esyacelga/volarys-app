@@ -29,28 +29,7 @@
                 </div>
                 <ion-button color="warning" (click)="seleccionarArticulo(data)" expand="block">SOLICITAR
                 </ion-button>
-                <ion-footer color="dark" *ngIf="!data.permiteComentar">
-                    <ion-card color="dark">
-                        <ion-row>
-                            <ion-col>
-                                <ion-button fill="clear" size="small" (click)="actualizarLike(data,true)">
-                                    <ion-icon slot="start" name="thumbs-up"></ion-icon>
-                                    <div>{{ data.conteoLike }} Me Gusta</div>
-                                </ion-button>
-                            </ion-col>
-                            <ion-col>
-                                <ion-button fill="clear" size="small" (click)="actualizarLike(data,false)">
-                                    <ion-icon slot="start" name="thumbs-down"></ion-icon>
-                                    <div>{{ data.conteoDisLike}} No me gusta
-                                    </div>
-                                </ion-button>
-                            </ion-col>
-                        </ion-row>
-                    </ion-card>
-                </ion-footer>
-            </ion-card>
-            <ion-footer color="dark" *ngIf="data.permiteComentar">
-                <ion-card color="dark">
+                <ion-card color="dark" *ngIf="!data.permiteComentar">
                     <ion-row>
                         <ion-col>
                             <ion-button fill="clear" size="small" (click)="actualizarLike(data,true)">
@@ -65,17 +44,34 @@
                                 </div>
                             </ion-button>
                         </ion-col>
-                        <ion-col>
-                            <ion-button fill="clear" size="small" (click)="abrirModal(data)">
-                                <ion-icon slot="start" name="chatbox-ellipses-outline"></ion-icon>
-                                <div>{{ data.conteoComentarios}}
-                                    Commentar
-                                </div>
-                            </ion-button>
-                        </ion-col>
                     </ion-row>
                 </ion-card>
-            </ion-footer>
+            </ion-card>
+            <ion-card color="dark" *ngIf="data.permiteComentar">
+                <ion-row>
+                    <ion-col>
+                        <ion-button fill="clear" size="small" (click)="actualizarLike(data,true)">
+                            <ion-icon slot="start" name="thumbs-up"></ion-icon>
+                            <div>{{ data.conteoLike }} Me Gusta</div>
+                        </ion-button>
+                    </ion-col>
+                    <ion-col>
+                        <ion-button fill="clear" size="small" (click)="actualizarLike(data,false)">
+                            <ion-icon slot="start" name="thumbs-down"></ion-icon>
+                            <div>{{ data.conteoDisLike}} No me gusta
+                            </div>
+                        </ion-button>
+                    </ion-col>
+                    <ion-col>
+                        <ion-button fill="clear" size="small" (click)="abrirModal(data)">
+                            <ion-icon slot="start" name="chatbox-ellipses-outline"></ion-icon>
+                            <div>{{ data.conteoComentarios}}
+                                Commentar
+                            </div>
+                        </ion-button>
+                    </ion-col>
+                </ion-row>
+            </ion-card>
         </ion-card>
     </ion-slide>
 </ion-slides>

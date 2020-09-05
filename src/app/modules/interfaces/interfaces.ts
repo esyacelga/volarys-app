@@ -10,10 +10,11 @@ export class NotificacionMensajeDto {
     public idSegmento: string;
     public nombreSegmento: string;
     public like: boolean;
+    public esServicio: boolean;
 
     constructor(id: string, displayName: string, picture: string, titulo: string, mensaje: string,
                 playerId: string, tipoNotificacon: number, portada: string,
-                idSegmento: string, nombreSegmento: string, like: boolean) {
+                idSegmento: string, nombreSegmento: string, like: boolean, esServicio: boolean) {
         this._id = id;
         this.displayName = displayName;
         this.picture = picture;
@@ -25,6 +26,7 @@ export class NotificacionMensajeDto {
         this.idSegmento = idSegmento;
         this.nombreSegmento = nombreSegmento;
         this.like = like;
+        this.esServicio = esServicio;
     }
 }
 

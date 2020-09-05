@@ -39,7 +39,7 @@
             </ion-button>
         </ion-buttons>
         <ion-buttons color="success" slot="end">
-            <ion-button (click)="registrarComentario(message); message= null">
+            <ion-button [disabled]="!message" (click)="registrarComentario(message); message= null">
                 <ion-icon color="success" slot="icon-only" name="send">
                 </ion-icon>
             </ion-button>
