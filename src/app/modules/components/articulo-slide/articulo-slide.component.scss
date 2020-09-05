@@ -8,11 +8,16 @@
 ion-slides { --bullet-background: #6161ff;
   --bullet-background-active: #8d91ff; }
 
+ion-footer{
+  --ion-background-color: #7D2502!important;
+}
+
 .card-center{
   width:90%; // adjust width on your ion-card suitable on your screen
   display:block;
   margin: 0 auto;
 }
+
 .image-slide {
   width: 100%;
   height: 250px;
