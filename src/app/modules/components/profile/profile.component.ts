@@ -28,7 +28,8 @@ export class ProfileComponent implements OnInit {
     error_messages = this.registoMensajes.error_messages;
     esUsuarioFirebase = false;
 
-    constructor(private formFuilder: FormBuilder, private svrSector: SectorService,
+    constructor(private formFuilder: FormBuilder,
+                private svrSector: SectorService,
                 private svtTipoUsuariPersona: TipoUsuarioPersonaService,
                 private modal: ModalController,
                 private svrStorage: StorageAppService,
@@ -86,12 +87,12 @@ export class ProfileComponent implements OnInit {
             ])),
             numeroTelefonoCelular: new FormControl('', Validators.compose([
                 Validators.minLength(9),
-                Validators.maxLength(10),
+                Validators.maxLength(12),
                 Validators.pattern('^-?[0-9]\\d*(\\.\\d{1,2})?$'),
             ])),
             numeroTelefonoConvencional: new FormControl('', Validators.compose([
                 Validators.minLength(9),
-                Validators.maxLength(10),
+                Validators.maxLength(12),
                 Validators.pattern('^-?[0-9]\\d*(\\.\\d{1,2})?$'),
             ]))
         });
@@ -106,6 +107,17 @@ export class ProfileComponent implements OnInit {
                 this.util.presentToast('Debe ingresar el sector de domicilio', COLOR_TOAST_WARNING);
                 return;
             }
+            if (this.tipoUsuarioPersona && this.tipoUsuarioPersona.numeroTelefonoCelular === '' && this.tipoUsuarioPersona.numeroTelefonoConvencional === '') {
+                this.util.presentToast('Se debe ingresar al menos un número de teléfono', COLOR_TOAST_WARNING);
+                return;
+            }
+            if (this.tipoUsuarioPersona && this.tipoUsuarioPersona.numeroTelefonoCelular) {
+                this.tipoUsuarioPersona.numeroTelefonoCelular.replace(' ', '');
+            }
+            if (this.tipoUsuarioPersona && this.tipoUsuarioPersona.numeroTelefonoConvencional) {
+                this.tipoUsuarioPersona.numeroTelefonoConvencional.replace(' ', '');
+            }
+            this.tipoUsuarioPersona.numeroTelefonoConvencional.replace(' ', '');
             await this.svrPersona.actualizarPersona(this.tipoUsuarioPersona);
             const objTipoUsuarioPersona: ModeloTipoUsuarioPersona = (await this.svtTipoUsuariPersona.obtenerPorCorreo(this.modeloPersonaTipoUsuario.persona.correo) as ModeloTipoUsuarioPersona);
             this.svrStorage.eliminarTodo();

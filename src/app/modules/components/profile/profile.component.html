@@ -61,7 +61,7 @@
 
                     <ion-item color="dark">
                         <ion-label position="floating">Teléfono celular</ion-label>
-                        <ion-input formControlName="numeroTelefonoCelular"></ion-input>
+                        <ion-input inputmode="tel" placeholder="0999999999" spellcheck="true" maxlength="10"  formControlName="numeroTelefonoCelular"></ion-input>
                     </ion-item>
                     <div class="error-messages">
                         <ng-container *ngFor="let error of error_messages.numeroTelefonoCelular">
@@ -74,7 +74,7 @@
 
                     <ion-item color="dark">
                         <ion-label position="floating">Teléfono convencional</ion-label>
-                        <ion-input formControlName="numeroTelefonoConvencional"></ion-input>
+                        <ion-input  inputmode="tel" placeholder="0222222222" spellcheck="true" maxlength="10" formControlName="numeroTelefonoConvencional"></ion-input>
                     </ion-item>
                     <div class="error-messages">
                         <ng-container *ngFor="let error of error_messages.numeroTelefonoConvencional">
@@ -111,7 +111,7 @@
             </ion-button>
             <ion-button (click)="cerrrarPanel()"
                         color="primary"
-                        expand="block">Cancelar
+                        expand="block">Volver
             </ion-button>
         </ion-footer>
     </form>

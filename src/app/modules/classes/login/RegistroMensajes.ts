@@ -1,49 +1,49 @@
 export class RegistroMensajes {
     error_messages = {
-        'fechaNacimiento': [
+        fechaNacimiento: [
             {type: 'required', message: 'Fecha de nacimiento es requerido'}
         ],
-        'correo': [
+        correo: [
             {type: 'required', message: 'Correo es requerido'},
             {type: 'minlength', message: 'Debe ser mayor o igual a 6 caracteres'},
             {type: 'maxlength', message: 'Debe ser menor o igual a 30 caracteres'}
         ],
-        'clave': [
+        clave: [
             {type: 'required', message: 'Password es requerido'},
             {type: 'minlength', message: 'Debe ser mayor o igual a 6 caracteres'},
             {type: 'maxlength', message: 'Debe ser menor o igual a 30 caracteres'}
 
         ],
-        'cedula': [
+        cedula: [
             {type: 'minlength', message: 'Debe ser mayor o igual a 9 caracteres'},
             {type: 'maxlength', message: 'Debe ser menor o igual a 10 caracteres'}
 
         ],
-        'passwordValidator': [
+        passwordValidator: [
             {type: 'required', message: 'La validación del password es requrido'},
             {type: 'minlength', message: 'Debe ser mayor o igual a 6 caracteres'},
             {type: 'maxlength', message: 'Debe ser menor o igual a 30 caracteres'}
 
         ],
-        'nombres': [
+        nombres: [
             {type: 'required', message: 'Los nombres son requerido'},
             {type: 'minlength', message: 'Debe ser mayor o igual a 6 caracteres'},
             {type: 'maxlength', message: 'Debe ser menor o igual a 30 caracteres'}
 
         ],
-        'apellidos': [
+        apellidos: [
             {type: 'required', message: 'Los apellidos son requeridos'},
             {type: 'minlength', message: 'Debe ser mayor o igual a 6 caracteres'},
             {type: 'maxlength', message: 'Debe ser menor o igual a 30 caracteres'}
         ],
-        'numeroTelefonoCelular': [
+        numeroTelefonoCelular: [
             {type: 'minlength', message: 'Debe ser mayor o igual a 10 caracteres'},
-            {type: 'pattern', message: 'Debe ser solo numeros'},
+            {type: 'pattern', message: 'Debe ser solo números sin espacios en blanco'},
             {type: 'maxlength', message: 'Debe ser menor o igual a 10 caracteres'}
         ],
-        'numeroTelefonoConvencional': [
+        numeroTelefonoConvencional: [
             {type: 'minlength', message: 'Debe ser mayor o igual a 10 caracteres'},
-            {type: 'pattern', message: 'Debe ser solo numeros'},
+            {type: 'pattern', message: 'Debe ser solo números sin espacios en blanco'},
             {type: 'maxlength', message: 'Debe ser menor o igual a 10 caracteres'}
         ]
 
