@@ -1,8 +1,8 @@
 <app-imagen-usuario></app-imagen-usuario>
 
 <ion-content color="dark" fullscreen>
-    <ion-list color="dark">
-        <ion-item color="primary">
+    <ion-list>
+        <ion-item color="tertiary">
             <ion-label>Total</ion-label>
             <div slot="end">{{ sumatoria}}</div>
         </ion-item>
@@ -10,12 +10,7 @@
 
 
     <ion-item-group color="dark">
-        <ion-button *ngIf="lstDetalle.length>0" color="warning" slot="end" (click)="registrarSolicitud()">
-            SOLCITAR
-        </ion-button>
-        <ion-button *ngIf="lstDetalle.length>0" color="danger" slot="end" (click)="eliminarLista()">
-            BORRAR
-        </ion-button>
+
         <ion-item-sliding *ngFor="let item of lstDetalle;let i = index">
             <ion-item color="dark">
                 <ion-badge color="secondary">{{(item.cantidad * item.unidadCosto).toFixed(2)}}</ion-badge>
@@ -31,18 +26,26 @@
             </ion-item-options>
         </ion-item-sliding>
 
+
+        <ion-button expand="block" *ngIf="lstDetalle.length>0" color="primary" slot="end"
+                    (click)="registrarSolicitud()">
+            SOLCITAR
+        </ion-button>
+        <ion-button expand="block" *ngIf="lstDetalle.length>0" color="warning" slot="end" (click)="eliminarLista()">
+            BORRAR
+        </ion-button>
+
+
     </ion-item-group>
 
 
 </ion-content>
 
 <ion-footer>
-    <ion-item color="primary">
-        <h6 slot="end">
-            <small>
-                Si ha solicitado un servcio en su pedido, el valor de este será comunicado por el chofer o
-                repartidor
-            </small>
-        </h6>
+    <ion-item color="tertiary">
+        <small>
+            Si ha solicitado un servcio en su pedido, el valor de este será comunicado por el chofer o
+            repartidor
+        </small>
     </ion-item>
 </ion-footer>

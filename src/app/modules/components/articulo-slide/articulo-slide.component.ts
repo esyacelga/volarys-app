@@ -94,7 +94,7 @@ export class ArticuloSlideComponent implements OnInit {
 
         art.nombreArticulo = item.descripcion;
         this.svrSolicitud.setDetalleSolcitud(art);
-        this.utilSvr.presentToast('Este artículo se ha agregado a su orden de compra', COLOR_TOAST_MORADO);
+        this.utilSvr.presentToast('Este artículo se ha agregado a su pedido', COLOR_TOAST_MORADO);
     }
 
     async ngOnInit() {

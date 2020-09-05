@@ -26,6 +26,7 @@ export class PedidoPage implements OnInit {
         this.sumatoria = 0;
         this.lstDetalle = [];
         this.transform([]);
+        this.eliminarListaPedido();
     }
 
 
@@ -79,6 +80,11 @@ export class PedidoPage implements OnInit {
 
     eliminar(item) {
         this.lstDetalle.splice(item, 1);
+        this.svrStorage.setStorageObject(this.lstDetalle, 'DetalleSolicitud');
+    }
+
+    private eliminarListaPedido() {
+        this.lstDetalle = [];
         this.svrStorage.setStorageObject(this.lstDetalle, 'DetalleSolicitud');
     }
 

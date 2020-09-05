@@ -35,8 +35,8 @@
                 <strong>
                     <small>{{notificacion.displayName}}{{',  '}}{{notificacion.titulo}}</small>
                 </strong>
-                <ion-icon *ngIf="notificacion.like" name="thumbs-up"></ion-icon>
-                <ion-icon *ngIf="!notificacion.like" name="thumbs-down"></ion-icon>
+                <ion-icon slot="end" *ngIf="notificacion.like" name="thumbs-up"></ion-icon>
+                <ion-icon slot="end" *ngIf="!notificacion.like" name="thumbs-down"></ion-icon>
             </ion-item>
             <ion-item color="light">
                 <strong>
