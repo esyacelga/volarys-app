@@ -95,7 +95,7 @@ export class PedidoPage implements OnInit {
     }
 
     async ionViewWillEnter() {
-        this.svrSolicitud.getDetalleSolicitud();
+        await this.svrSolicitud.getDetalleSolicitud();
         this.lstDetalle = await this.svrSolicitud.lstDetalle;
         this.transform(this.lstDetalle);
     }
