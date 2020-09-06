@@ -2,26 +2,28 @@
     <app-imagen-usuario></app-imagen-usuario>
 </ion-header>
 <ion-content fullscreen color="dark">
-    <ion-card *ngFor="let notificacion of lsNotificaciones" color="light">
-        <div *ngIf="notificacion.tipoNotificacon===0 && notificacion.esServicio">
-            <ion-item color="light">
-                <ion-avatar slot="start">
-                    <img [src]="notificacion.picture|urlSanitizer">
-                </ion-avatar>
-                <strong>
-                    <small>{{notificacion.displayName}}{{', '}}{{notificacion.titulo}}{{' para: '}}{{notificacion.nombreSegmento|uppercase}}</small>
-                </strong>
-                <ion-avatar slot="end">
-                    <img [src]="(notificacion.portada | imagen: notificacion.idSegmento )| urlSanitizer">
-                </ion-avatar>
-            </ion-item>
-            <ion-card-content>
-                <small>
-                    {{notificacion.mensaje}}
-                </small>
-            </ion-card-content>
-        </div>
-        <div *ngIf="notificacion.tipoNotificacon===1">
+    <div *ngFor="let notificacion of lsNotificaciones" color="light">
+
+        <ion-card color="light" *ngIf="notificacion.tipoNotificacon===0 && notificacion.esServicio">
+                <ion-item color="light">
+                    <ion-avatar slot="start">
+                        <img [src]="notificacion.picture|urlSanitizer">
+                    </ion-avatar>
+                    <strong>
+                        <small>{{notificacion.displayName}}{{', '}}{{notificacion.titulo}}{{' para: '}}{{notificacion.nombreSegmento|uppercase}}</small>
+                    </strong>
+                    <ion-avatar slot="end">
+                        <img [src]="(notificacion.portada | imagen: notificacion.idSegmento )| urlSanitizer">
+                    </ion-avatar>
+                </ion-item>
+                <ion-card-content>
+                    <small>
+                        {{notificacion.mensaje}}
+                    </small>
+                </ion-card-content>
+        </ion-card>
+
+        <ion-card color="light" *ngIf="notificacion.tipoNotificacon===1">
             <ion-item color="light">
                 <ion-icon slot="start" *ngIf="notificacion.like" name="thumbs-up"></ion-icon>
                 <ion-icon slot="start" *ngIf="!notificacion.like" name="thumbs-down"></ion-icon>
@@ -34,9 +36,9 @@
                     <img [src]="(notificacion.portada | imagen: notificacion.idSegmento )| urlSanitizer">
                 </ion-avatar>
             </ion-item>
-        </div>
+        </ion-card>
 
-        <div *ngIf="notificacion.tipoNotificacon===2">
+        <ion-card color="light" *ngIf="notificacion.tipoNotificacon===2">
             <ion-item color="light">
                 <ion-avatar slot="start">
                     <img src="/assets/avatars/logo-volarys.png">
@@ -50,9 +52,9 @@
                     {{notificacion.mensaje}}
                 </small>
             </ion-card-content>
-        </div>
+        </ion-card>
 
-        <div *ngIf="notificacion.tipoNotificacon===3 && notificacion.playerId === playerId">
+        <ion-card color="light" *ngIf="notificacion.tipoNotificacon===3 && notificacion.playerId === playerId">
             <ion-item color="light">
                 <ion-avatar slot="start">
                     <img src="/assets/avatars/logo-volarys.png">
@@ -66,7 +68,8 @@
                     {{notificacion.mensaje}}
                 </small>
             </ion-card-content>
-        </div>
-    </ion-card>
+        </ion-card>
+
+    </div>
 </ion-content>
 
