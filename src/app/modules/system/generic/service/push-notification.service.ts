@@ -38,9 +38,8 @@ export class PushNotificationService {
 
 
     reenvioPantalla(payload: OSNotificationPayload) {
-        console.log('Payload pantalla: ', payload);
         if (payload.additionalData && payload.additionalData.key && payload.additionalData.key === 'ruta') {
-            this.nav.navigateForward(payload.additionalData.valor);
+            this.nav.navigateForward(payload.additionalData.ruta);
         }
 
     }
