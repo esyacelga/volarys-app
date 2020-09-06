@@ -53,26 +53,29 @@ export class Util {
     }
 
 
-    public async presentToast(mensaje, color, position?) {
+    public async presentToast(mensaje, color, position?, duracion?: number) {
         if (!position) {
             position = 'top';
+        }
+        if (!duracion) {
+            duracion = DURATION_TOAST;
         }
         const toast = await this.notify.create({
             message: mensaje,
             position,
-            duration: DURATION_TOAST,
+            duration: duracion,
             color
         });
         toast.present();
     }
 
 
-    public toXML = function(json: any) {
+    public toXML = function (json: any) {
         return null;
     };
 
 
-    public listarObjetoPorCampo = function(lista: any[], campo: string, valor: string) {
+    public listarObjetoPorCampo = function (lista: any[], campo: string, valor: string) {
         const list = [];
         if (lista) {
             for (const iterador of lista) {
@@ -84,7 +87,7 @@ export class Util {
         return list;
     };
 
-    stringToDate = function(_date, _format, _delimiter) {
+    stringToDate = function (_date, _format, _delimiter) {
         const formatLowerCase = _format.toLowerCase();
         const formatItems = formatLowerCase.split(_delimiter);
         const dateItems = _date.split(_delimiter);
@@ -98,12 +101,12 @@ export class Util {
     };
 
 
-    stringToDateFormat = function(fecha: string): String {
+    stringToDateFormat = function (fecha: string): String {
         const newDate = new Date(fecha);
         return this.formatoFecha(newDate);
     };
 
-    formatoFecha = function(fecha): string {
+    formatoFecha = function (fecha): string {
         if (!fecha) {
             return this.formatoFecha(new Date());
         }
@@ -117,7 +120,7 @@ export class Util {
     };
 
 
-    modificarValoresBooleanos = function(lista, campo) {
+    modificarValoresBooleanos = function (lista, campo) {
         if (lista) {
             if (lista) {
                 for (let i = 0; i < lista.length; i++) {
@@ -136,7 +139,7 @@ export class Util {
     };
 
 
-    private xmlToJsonFormat = function(xml) {
+    private xmlToJsonFormat = function (xml) {
         const data = this.xmlToJson(xml);
         if (!data.root) {
             return null;
@@ -152,7 +155,7 @@ export class Util {
         }
     };
 
-    entidadDesdeXML = function(data) {
+    entidadDesdeXML = function (data) {
         if (!data || data == null) {
             return null;
         }
@@ -164,7 +167,7 @@ export class Util {
         return obj.root.entidad.row;
     };
 
-    private formatearListaXml = function(lst) {
+    private formatearListaXml = function (lst) {
         const lista = [];
         if (lst == null) {
             return null;
@@ -174,14 +177,14 @@ export class Util {
         }
         return lista;
     };
-    private parseXml = function(data) {
+    private parseXml = function (data) {
         let parser, xmlDoc;
         parser = new DOMParser();
         xmlDoc = parser.parseFromString(data, 'text/xml');
         return xmlDoc;
     };
 
-    public listaDesdeXML = function(data) {
+    public listaDesdeXML = function (data) {
         const parseXml = this.parseXml(data);
         const obj = this.xmlToJsonFormat(parseXml);
         if (!obj) {
@@ -190,7 +193,7 @@ export class Util {
         return this.formatearListaXml(obj.root.entidad);
     };
 
-    private xmlToJson = function(xml) {
+    private xmlToJson = function (xml) {
         // Create the return object
         let obj = {};
 

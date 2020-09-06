@@ -5,7 +5,12 @@ import {SolcitudDetalleModel} from '../../classes/mensajeria/SolcitudCabeceraMod
 import {SolicitudService} from '../../services/mensajeria/solicitud.service';
 import {Util} from '../../system/generic/classes/util';
 import {StorageAppService} from '../../system/generic/service/storage-app.service';
-import {COLOR_TOAST_MORADO, COLOR_TOAST_PRIMARY, COLOR_TOAST_WARNING} from '../../system/generic/classes/constant';
+import {
+    COLOR_TOAST_MORADO,
+    COLOR_TOAST_PRIMARY,
+    COLOR_TOAST_WARNING,
+    DOBLE_DURATION_TOAST
+} from '../../system/generic/classes/constant';
 import {CommentComponent} from '../comment-component/comment.component';
 import {ModalController} from '@ionic/angular';
 import {ModeloTipoUsuarioPersona} from '../../classes/persona/TipoUsuarioPersona';
@@ -73,12 +78,9 @@ export class ArticuloSlideComponent implements OnInit {
 
     async seleccionarArticulo(item: Articulo) {
         this.objArticulo = item;
-/*
-        const lstPedido: Pedido[] = (await this.svrSolicitud.obtenerPedidoPorUsuario(this.modeloPersonaTipoUsuario.usuario._id) as Pedido[]);
-*/
         this.modeloPersonaTipoUsuario = (await this.svrStorage.loadStorageObject('usuario')) as ModeloTipoUsuarioPersona;
         if (!this.modeloPersonaTipoUsuario.persona.numeroTelefonoCelular) {
-            this.utilSvr.presentToast('Para generar su primer pedido y mejorar nuestro servicio debe actualizar la informacion solicitada', COLOR_TOAST_PRIMARY);
+            this.utilSvr.presentToast('Para generar su primer pedido debe actualizar su información personal', COLOR_TOAST_PRIMARY, 'top', DOBLE_DURATION_TOAST);
             this.activarPanel();
             return;
         }
@@ -94,7 +96,7 @@ export class ArticuloSlideComponent implements OnInit {
         const art = new SolcitudDetalleModel(item._id, item.estado, item.descripcion, 1, item.unidadAlmacenada, item.unidadCosto);
         art.nombreArticulo = item.descripcion;
         this.svrSolicitud.setDetalleSolcitud(art);
-        this.utilSvr.presentToast('Este artículo se ha agregado a su pedido', COLOR_TOAST_MORADO);
+        this.utilSvr.presentToast('Este artículo se ha agregado a la lista, para continuar con la compra debe ir a la sección pedidos ', COLOR_TOAST_MORADO, 'top', DOBLE_DURATION_TOAST);
     }
 
     async ngOnInit() {

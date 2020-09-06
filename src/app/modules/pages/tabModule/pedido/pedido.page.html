@@ -4,13 +4,12 @@
     <ion-list>
         <ion-item color="tertiary">
             <ion-label>Total</ion-label>
-            <div slot="end">{{ sumatoria}}</div>
+            <ion-badge color="success" slot="end">{{ sumatoria}}</ion-badge>
         </ion-item>
     </ion-list>
 
 
     <ion-item-group color="dark">
-
         <ion-item-sliding *ngFor="let item of lstDetalle;let i = index">
             <ion-item color="dark">
                 <ion-badge color="secondary">{{(item.cantidad * item.unidadCosto).toFixed(2)}}</ion-badge>
