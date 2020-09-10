@@ -31,6 +31,16 @@ export class AppComponent {
     ) {
         this.initializeApp();
     }
+    // public  routerEl = document.querySelector('ion-router');
+    private setAndroidBackButtonBehavior(): void {
+        if (this.platform.is('cordova')) {
+            this.platform.backButton.subscribe(() => {
+               /* if (window.location.pathname === "/home") {
+                    navigator['app'].exitApp();
+                }*/
+            });
+        }
+    }
 
 
     public initializeApp() {

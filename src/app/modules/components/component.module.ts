@@ -15,6 +15,7 @@ import {ImagenUsuarioComponent} from './imagen-usuario/imagen-usuario.component'
 import {CommentComponent} from './comment-component/comment.component';
 import {ItemCommentModule} from './comment-component/item-comment.module';
 import {ProfileModule} from './profile/profile.module';
+import {ImageModalPageModule} from './modals/image-modal/image-modal.module';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import {ProfileModule} from './profile/profile.module';
     ],
     imports: [
         ItemCommentModule,
+        ImageModalPageModule,
         CommonModule,
         PipesModule,
         FormsModule,

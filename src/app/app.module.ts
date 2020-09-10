@@ -21,6 +21,7 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {firebaseConfig} from '../environments/environment';
 import {Facebook} from '@ionic-native/facebook/ngx';
 import {Network} from '@ionic-native/network/ngx';
+import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 
 @NgModule({
     declarations: [AppComponent, MenuComponent],
@@ -29,6 +30,7 @@ import {Network} from '@ionic-native/network/ngx';
         IonicStorageModule.forRoot(), AngularFireAuthModule, AngularFireModule.initializeApp(firebaseConfig), AngularFirestoreModule],
     providers: [
         Network,
+        PhotoViewer,
         Facebook,
         GooglePlus,
         ComponentModule,

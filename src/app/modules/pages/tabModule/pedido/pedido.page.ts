@@ -6,6 +6,7 @@ import {PushNotificationService} from '../../../system/generic/service/push-noti
 import {MensajeOneSignal} from '../../../system/generic/classes/MensajeOneSignal';
 import {ObjetoTipoUsuarioPersona} from '../../../classes/persona/ObjetoTipoUsuarioPersona';
 import {GRUPO_ADMINISTRADOR} from '../../../system/generic/classes/constant';
+import {NavController, Platform} from '@ionic/angular';
 
 @Component({
     selector: 'app-tab2',
@@ -17,10 +18,15 @@ export class PedidoPage implements OnInit {
     lstDetalle: SolcitudDetalleModel[] = [];
     sumatoria = 0;
 
-    constructor(private svrSolicitud: SolicitudService,
+    constructor(private svrSolicitud: SolicitudService, private platform: Platform, private nvrServ: NavController,
                 private svrStorage: StorageAppService, private svrNoti: PushNotificationService) {
-
+        if (this.platform.is('cordova')) {
+            this.platform.backButton.subscribeWithPriority(5, () => {
+                this.nvrServ.navigateForward('main/tabs/tab1');
+            });
+        }
     }
+
 
     eliminarLista() {
         this.sumatoria = 0;

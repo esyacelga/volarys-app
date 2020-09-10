@@ -5,6 +5,25 @@
 
 
 */
+
+.profilebutton {
+  z-index: 2;
+  position: absolute;
+  right: 1%;
+  top: 5%;
+  margin: auto;
+}
+.profilepic {
+  border:1px solid #000;
+  width: 65%;
+  height: 65%;
+}
+.profilepic-border {
+  position: relative;
+  background: #a3a3a3;
+}
+
+
 ion-slides { --bullet-background: #6161ff;
   --bullet-background-active: #8d91ff; }
 

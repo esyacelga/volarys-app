@@ -1,34 +1,52 @@
-<ion-slides pager="true" *ngIf="lstArticulo">
+<ion-slides pager="true" *ngIf="lstArticulo" loop="true">
     <ion-slide *ngFor="let data of lstArticulo | segmentoArticulo:segmento">
         <ion-card color="secondary">
             <ion-card-header>
                 <ion-card-subtitle>{{segmento.descripcion | uppercase}}</ion-card-subtitle>
             </ion-card-header>
-            <ion-slide class="image-slide"
-                       [style]=" (data.portada | imagen: data.articuloSegmento._id ) | domSanitizer ">
+            <ion-slide>
+                <ion-button fill="clear" class="profilebutton" color="primary" (click)="zoomImage(data.portada,data.articuloSegmento._id)">
+                    <ion-icon slot="icon-only" name="search-outline"></ion-icon>
+                </ion-button>
+                <img [src]="(data.portada | imagen: data.articuloSegmento._id )  |urlSanitizer" class="thumb-img"
+                     imageViewer>
             </ion-slide>
             <ion-card color="shade">
                 <div *ngIf="!data.esBanner && !data.verObservacion">
                     <ion-label *ngIf="!data.esServicio">
-                        <h3>{{data.descripcion | uppercase}}</h3>
-                        <p>Costo unidad: {{data.unidadCosto}}</p>
+                        <h3><strong>
+                            {{data.descripcion | uppercase}}
+                        </strong>
+                        </h3>
+                        <p>Costo unidad: {{data.unidadCosto | currency}}</p>
                     </ion-label>
                     <ion-label *ngIf="data.esServicio">
                         <h3>{{data.descripcion | uppercase}}</h3>
-                        <p>Costo Servicio: {{data.unidadCosto}}</p>
+                        <p>Costo Servicio: {{data.unidadCosto | currency}}</p>
                     </ion-label>
                 </div>
                 <div *ngIf="data.verObservacion">
-                    <ion-card-header>
-                        <ion-card-title>
-                            {{data.descripcion }}</ion-card-title>
-                    </ion-card-header>
+                    <ion-label>
+                        <h3>
+                            <strong>
+                                {{data.descripcion | uppercase}}
+                            </strong>
+                        </h3>
+                    </ion-label>
                     <ion-card-content class="card-center">
                         {{data.obsevacion}}
                     </ion-card-content>
                 </div>
+                <!--{{'http://164.90.231.150:3000/articulo/imagen/' + data.articuloSegmento._id + '/' + data.portada}}
+                <ion-button color="warning"
+                            (click)="zoomImage('http://164.90.231.150:3000/articulo/imagen/'+data.articuloSegmento._id+'/'+data.portada)"
+                            expand="block">VER
+                </ion-button>-->
                 <ion-button color="warning" (click)="seleccionarArticulo(data)" expand="block">SOLICITAR
                 </ion-button>
+                <!--<ion-button color="warning" (click)="abrirModalImage(data.portada,data.articuloSegmento._id )"
+                            expand="block">ABRIR DETALLE
+                </ion-button>-->
                 <ion-card color="dark" *ngIf="!data.permiteComentar">
                     <ion-row>
                         <ion-col>

@@ -12,14 +12,17 @@ import {
     DOBLE_DURATION_TOAST
 } from '../../system/generic/classes/constant';
 import {CommentComponent} from '../comment-component/comment.component';
-import {ModalController} from '@ionic/angular';
+import {ModalController, Platform} from '@ionic/angular';
 import {ModeloTipoUsuarioPersona} from '../../classes/persona/TipoUsuarioPersona';
 import {LikeDislikeService} from '../../services/common/likeDislike.service';
 import {LikeDislike} from '../../classes/common/LikeDislike';
 import {Observable} from 'rxjs';
 import {ArticuloService} from '../../services/mensajeria/articulo.service';
 import {ProfileComponent} from '../profile/profile.component';
-
+import {ImageModalPage} from '../modals/image-modal/image-modal.page';
+import {PhotoViewer} from '@ionic-native/photo-viewer/ngx';
+import {environment} from '../../../../environments/environment';
+const URL = environment.url;
 @Component({
     selector: 'app-articulo-slide',
     templateUrl: './articulo-slide.component.html',
@@ -40,10 +43,23 @@ export class ArticuloSlideComponent implements OnInit {
 
     constructor(private svrSolicitud: SolicitudService,
                 private utilSvr: Util,
+                private platform: Platform,
+                private photoViewer: PhotoViewer,
                 private svrArticulo: ArticuloService,
                 private svrStorage: StorageAppService,
                 private modalCtrl: ModalController,
                 private  svrLike: LikeDislikeService) {
+    }
+
+
+    public zoomImage(nombre, directorio) {
+        if (this.platform.is('cordova')) {
+            const url = `${URL}/articulo/imagen/${directorio}/${nombre}`;
+            this.photoViewer.show(url);
+        } else {
+            this.utilSvr.presentToast('Opcion no disponible desde sistema WEB', COLOR_TOAST_WARNING);
+        }
+
     }
 
     public async abrirModal(item: Articulo) {
@@ -53,6 +69,16 @@ export class ArticuloSlideComponent implements OnInit {
                 objArticulo: item,
                 objTipoUsuarioPersona: this.modeloPersonaTipoUsuario
             }
+        });
+        await modal.present();
+        const {data} = await modal.onDidDismiss();
+        this.lstArticulo = (await this.svrArticulo.obtenerArticulos() as Array<Articulo>);
+    }
+
+    public async abrirModalImage(nombre, directorio) {
+        const modal = await this.modalCtrl.create({
+            component: ImageModalPage,
+            componentProps: {nombre, directorio}
         });
         await modal.present();
         const {data} = await modal.onDidDismiss();

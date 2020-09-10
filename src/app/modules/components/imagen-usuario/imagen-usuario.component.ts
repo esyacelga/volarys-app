@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {StorageAppService} from '../../system/generic/service/storage-app.service';
 import {ModeloTipoUsuarioPersona} from '../../classes/persona/TipoUsuarioPersona';
-import {NavController} from "@ionic/angular";
+import {NavController} from '@ionic/angular';
 
 @Component({
     selector: 'app-imagen-usuario',

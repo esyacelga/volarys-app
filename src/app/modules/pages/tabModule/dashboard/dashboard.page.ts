@@ -3,6 +3,7 @@ import {Articulo} from '../../../classes/mensajeria/Articulo';
 import {TipoArticulo} from '../../../classes/mensajeria/tipo-articulo';
 import {TipoArticuloClientService} from '../../../services/mensajeria/tipo-articulo-client.service';
 import {ModeloTipoUsuarioPersona} from '../../../classes/persona/TipoUsuarioPersona';
+import {NavController, Platform} from '@ionic/angular';
 
 @Component({
     selector: 'app-tab1',
@@ -17,7 +18,10 @@ export class DashboardPage implements OnInit {
     modeloPersonaTipoUsuario: ModeloTipoUsuarioPersona;
 
 
-    constructor(private svcTipoArticulo: TipoArticuloClientService) {
+    constructor(private svcTipoArticulo: TipoArticuloClientService, private platform: Platform, private nvrServ: NavController) {
+        /*this.platform.backButton.subscribeWithPriority(5, () => {
+            this.tipoArticulo = null;
+        });*/
     }
 
     async ngOnInit() {
