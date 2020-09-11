@@ -8,6 +8,7 @@ import {SegmentoArticuloPipe} from './segmento-articulo.pipe';
 import {SumatoriaArticulosPipe} from './sumatoria-articulos.pipe';
 import {FiltroPedidoPipe} from './filtro-pedido.pipe';
 import {UrlSanitizerPipe} from './url-sanitizer.pipe';
+import {TipoArticuloPipe} from "./tipo-articulo.pipe";
 
 @NgModule({
     declarations: [
@@ -17,6 +18,7 @@ import {UrlSanitizerPipe} from './url-sanitizer.pipe';
         FilterPipe,
         FiltroSegmentoPipe,
         SegmentoArticuloPipe,
+        TipoArticuloPipe,
         SumatoriaArticulosPipe,
         FiltroPedidoPipe,
         UrlSanitizerPipe,
@@ -30,6 +32,7 @@ import {UrlSanitizerPipe} from './url-sanitizer.pipe';
         FiltroSegmentoPipe,
         SegmentoArticuloPipe,
         FiltroPedidoPipe,
+        TipoArticuloPipe,
         SumatoriaArticulosPipe
     ]
 })

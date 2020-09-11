@@ -22,8 +22,14 @@ export class SegmentoService {
     }
 
 
-    async obtenerSegmentos() {
+    async obtenerSegmentoPorArticuloTodos() {
         const requestOptions = new RequestOptions();
+        return await this.genericService.servicioRestGenericoGet({}, OBTENER_TODOS_SEGMENTOS, requestOptions);
+    }
+
+    async obtenerSegmentoPorArticuloTodosSBL() {
+        const requestOptions = new RequestOptions();
+        requestOptions.mostrarLoading = false;
         return await this.genericService.servicioRestGenericoGet({}, OBTENER_TODOS_SEGMENTOS, requestOptions);
     }
 

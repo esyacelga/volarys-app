@@ -33,6 +33,12 @@ export class ArticuloService {
         return await this.genericService.servicioRestGenericoGet({}, OBTENER_TODOS_ARTICULOS, requestOptions);
     }
 
+    async obtenerArticulosTodosSBL() {
+        const requestOptions = new RequestOptions();
+        requestOptions.mostrarLoading = false;
+        return await this.genericService.servicioRestGenericoGet({}, OBTENER_TODOS_ARTICULOS, requestOptions);
+    }
+
     async obtenerArticulosSinloading() {
         const requestOptions = new RequestOptions();
         requestOptions.mostrarLoading = false;

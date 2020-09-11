@@ -2,14 +2,13 @@
     <ion-slide *ngFor="let data of lstArticulo | segmentoArticulo:segmento">
         <ion-card color="secondary">
             <ion-card-header>
-                <ion-card-subtitle>{{segmento.descripcion | uppercase}}</ion-card-subtitle>
+                <ion-card-subtitle>{{segmento.descripcion | uppercase }}</ion-card-subtitle>
             </ion-card-header>
-            <ion-slide>
+            <ion-slide class="image-slide">
                 <ion-button fill="clear" class="profilebutton" color="primary" (click)="zoomImage(data.portada,data.articuloSegmento._id)">
                     <ion-icon slot="icon-only" name="search-outline"></ion-icon>
                 </ion-button>
-                <img [src]="(data.portada | imagen: data.articuloSegmento._id )  |urlSanitizer" class="thumb-img"
-                     imageViewer>
+                <img [src]="(data.portada | imagen: data.articuloSegmento._id )  |urlSanitizer" class="thumb-img" >
             </ion-slide>
             <ion-card color="shade">
                 <div *ngIf="!data.esBanner && !data.verObservacion">

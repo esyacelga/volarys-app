@@ -4,7 +4,7 @@ import {Segmento} from '../../classes/mensajeria/Segmento';
 import {Articulo} from '../../classes/mensajeria/Articulo';
 import {SegmentoService} from '../../services/mensajeria/segmento.service';
 import {ArticuloService} from '../../services/mensajeria/articulo.service';
-import {Platform} from "@ionic/angular";
+import {StorageAppService} from '../../system/generic/service/storage-app.service';
 
 
 @Component({
@@ -15,30 +15,19 @@ import {Platform} from "@ionic/angular";
 export class ItemSeleccionadoComponent implements OnInit {
 
     @Input() tipoArticulo: TipoArticulo;
-    lstSegmento: Array<Segmento>;
-    lstArticulo: Array<Articulo>;
+    lstSegmento: Segmento[];
+    lstArticulo: Articulo[];
 
 
-    constructor(private svrSegmentoAticulo: SegmentoService, private svrArticulo: ArticuloService, private platform: Platform) {
-        /*
-                this.backButtonSub = this.platform.backButton.subscribeWithPriority(20, () => {
-                    this.tipoArticulo = null;
-                });
-        */
+    constructor(private svrSegmentoAticulo: SegmentoService, private svrArticulo: ArticuloService, private svrStorage: StorageAppService,) {
     }
-
-    /*
-        ionViewWillLeave() {
-            this.backButtonSub.unsubscribe();
-        }
-    */
 
 
     async ngOnInit() {
-        // @ts-ignore
-        this.lstSegmento = await this.svrSegmentoAticulo.obtenerSegmentoPorArticulo(this.tipoArticulo._id);
-        // @ts-ignore
-        this.lstArticulo = await this.svrArticulo.obtenerArticulos();
+        this.lstSegmento = (await this.svrStorage.loadStorageObject('lstSegmento')) as Segmento[];
+        // this.lstSegmento = await this.svrSegmentoAticulo.obtenerSegmentoPorArticulo(this.tipoArticulo._id) as Segmento[];
+        this.lstArticulo = (await this.svrStorage.loadStorageObject('lstArticulo')) as Articulo[];
+        // this.lstArticulo = await this.svrArticulo.obtenerArticulos() as Articulo[];
     }
 
 

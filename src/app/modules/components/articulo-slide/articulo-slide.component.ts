@@ -22,7 +22,10 @@ import {ProfileComponent} from '../profile/profile.component';
 import {ImageModalPage} from '../modals/image-modal/image-modal.page';
 import {PhotoViewer} from '@ionic-native/photo-viewer/ngx';
 import {environment} from '../../../../environments/environment';
+import {DataService} from "../../services/mensajeria/data.service";
+
 const URL = environment.url;
+
 @Component({
     selector: 'app-articulo-slide',
     templateUrl: './articulo-slide.component.html',
@@ -43,6 +46,7 @@ export class ArticuloSlideComponent implements OnInit {
 
     constructor(private svrSolicitud: SolicitudService,
                 private utilSvr: Util,
+                private dataService: DataService,
                 private platform: Platform,
                 private photoViewer: PhotoViewer,
                 private svrArticulo: ArticuloService,
@@ -118,12 +122,15 @@ export class ArticuloSlideComponent implements OnInit {
             this.utilSvr.presentToast('Este artículo ya sido seleccionado', COLOR_TOAST_WARNING);
             return;
         }
-
         const art = new SolcitudDetalleModel(item._id, item.estado, item.descripcion, 1, item.unidadAlmacenada, item.unidadCosto);
         art.nombreArticulo = item.descripcion;
         this.svrSolicitud.setDetalleSolcitud(art);
+        await this.svrSolicitud.getDetalleSolicitud();
+        const lstDetalleEmmiter: SolcitudDetalleModel[] = this.svrSolicitud.lstDetalle;
+        this.dataService.lstPedido$.emit(lstDetalleEmmiter);
         this.utilSvr.presentToast('Este artículo se ha agregado a la lista, para continuar con la compra debe ir a la sección pedidos ', COLOR_TOAST_MORADO, 'top', DOBLE_DURATION_TOAST);
     }
+
 
     async ngOnInit() {
         this.modeloPersonaTipoUsuario = (await this.svrStorage.loadStorageObject('usuario')) as ModeloTipoUsuarioPersona;

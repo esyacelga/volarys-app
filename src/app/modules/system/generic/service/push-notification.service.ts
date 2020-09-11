@@ -41,6 +41,9 @@ export class PushNotificationService {
         if (payload.additionalData && payload.additionalData.key && payload.additionalData.key === 'ruta') {
             this.nav.navigateForward(payload.additionalData.ruta);
         }
+        if (payload.additionalData && payload.additionalData.key && payload.additionalData.key === 'UPDATE') {
+            this.nav.navigateForward(payload.additionalData.ruta);
+        }
 
     }
 
