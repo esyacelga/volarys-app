@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 
-import {NavController, Platform} from '@ionic/angular';
+import {AlertController, NavController, Platform} from '@ionic/angular';
 import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
 import {StorageAppService} from './modules/system/generic/service/storage-app.service';
@@ -9,6 +9,7 @@ import {ModeloTipoUsuarioPersona} from './modules/classes/persona/TipoUsuarioPer
 import {Network} from '@ionic-native/network/ngx';
 import {Util} from './modules/system/generic/classes/util';
 import {COLOR_TOAST_DARK, COLOR_TOAST_SUCCESS, OFFLINE, ONLINE} from './modules/system/generic/classes/constant';
+import {Location} from '@angular/common';
 
 @Component({
     selector: 'app-root',
@@ -19,7 +20,9 @@ export class AppComponent {
     usuario: any;
     modeloPersonaTipoUsuario: ModeloTipoUsuarioPersona;
 
+
     constructor(
+        private location: Location,
         private platform: Platform,
         private splashScreen: SplashScreen,
         private statusBar: StatusBar,
@@ -27,19 +30,11 @@ export class AppComponent {
         private svrStorage: StorageAppService,
         private svrNet: Network,
         private util: Util,
+        public alertController: AlertController,
+        private nvrServ: NavController,
         private svtNotificacion: PushNotificationService
     ) {
         this.initializeApp();
-    }
-    // public  routerEl = document.querySelector('ion-router');
-    private setAndroidBackButtonBehavior(): void {
-        if (this.platform.is('cordova')) {
-            this.platform.backButton.subscribe(() => {
-               /* if (window.location.pathname === "/home") {
-                    navigator['app'].exitApp();
-                }*/
-            });
-        }
     }
 
 
@@ -55,11 +50,47 @@ export class AppComponent {
             this.statusBar.styleDefault();
             this.splashScreen.hide();
         });
+
+        if (this.platform.is('cordova')) {
+            this.platform.backButton.subscribeWithPriority(10, (processNextHandler) => {
+                // this.nvrServ.navigateForward('main/tabs/tab1');
+                if (this.location.isCurrentPathEqualTo('/main/tabs/tab1')) {
+                    this.showExitConfirm();
+                    processNextHandler();
+
+                } else {
+                    this.location.back();
+                }
+            });
+        }
+    }
+
+
+    public showExitConfirm() {
+        this.alertController.create({
+            header: 'Salida',
+            message: 'Desea salir de la aplicación?',
+            backdropDismiss: false,
+            buttons: [{
+                text: 'Quedarse',
+                role: 'cancel',
+                handler: () => {
+                    console.log('Application exit prevented!');
+                }
+            }, {
+                text: 'Salir',
+                handler: () => {
+                    navigator['app'].exitApp();
+                }
+            }]
+        })
+            .then(alert => {
+                alert.present();
+            });
     }
 
     public iniciaPulginCordova() {
         if (this.platform.is('cordova')) {
-            // this.obtencionInformacionTelefono();
             this.svtNotificacion.configuracionProcesoNotificacion();
             this.svrNet.onDisconnect().subscribe(() => {
                 this.util.presentToast(OFFLINE, COLOR_TOAST_DARK);

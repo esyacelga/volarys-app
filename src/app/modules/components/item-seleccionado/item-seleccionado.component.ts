@@ -4,6 +4,7 @@ import {Segmento} from '../../classes/mensajeria/Segmento';
 import {Articulo} from '../../classes/mensajeria/Articulo';
 import {SegmentoService} from '../../services/mensajeria/segmento.service';
 import {ArticuloService} from '../../services/mensajeria/articulo.service';
+import {Platform} from "@ionic/angular";
 
 
 @Component({
@@ -17,8 +18,21 @@ export class ItemSeleccionadoComponent implements OnInit {
     lstSegmento: Array<Segmento>;
     lstArticulo: Array<Articulo>;
 
-    constructor(private svrSegmentoAticulo: SegmentoService, private svrArticulo: ArticuloService) {
+
+    constructor(private svrSegmentoAticulo: SegmentoService, private svrArticulo: ArticuloService, private platform: Platform) {
+        /*
+                this.backButtonSub = this.platform.backButton.subscribeWithPriority(20, () => {
+                    this.tipoArticulo = null;
+                });
+        */
     }
+
+    /*
+        ionViewWillLeave() {
+            this.backButtonSub.unsubscribe();
+        }
+    */
+
 
     async ngOnInit() {
         // @ts-ignore

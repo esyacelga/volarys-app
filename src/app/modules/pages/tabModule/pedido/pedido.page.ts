@@ -20,11 +20,6 @@ export class PedidoPage implements OnInit {
 
     constructor(private svrSolicitud: SolicitudService, private platform: Platform, private nvrServ: NavController,
                 private svrStorage: StorageAppService, private svrNoti: PushNotificationService) {
-        if (this.platform.is('cordova')) {
-            this.platform.backButton.subscribeWithPriority(5, () => {
-                this.nvrServ.navigateForward('main/tabs/tab1');
-            });
-        }
     }
 
 
