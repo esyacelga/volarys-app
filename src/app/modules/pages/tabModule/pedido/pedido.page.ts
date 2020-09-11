@@ -7,6 +7,7 @@ import {MensajeOneSignal} from '../../../system/generic/classes/MensajeOneSignal
 import {ObjetoTipoUsuarioPersona} from '../../../classes/persona/ObjetoTipoUsuarioPersona';
 import {GRUPO_ADMINISTRADOR} from '../../../system/generic/classes/constant';
 import {NavController, Platform} from '@ionic/angular';
+import {DataService} from '../../../services/mensajeria/data.service';
 
 @Component({
     selector: 'app-tab2',
@@ -18,7 +19,7 @@ export class PedidoPage implements OnInit {
     lstDetalle: SolcitudDetalleModel[] = [];
     sumatoria = 0;
 
-    constructor(private svrSolicitud: SolicitudService, private platform: Platform, private nvrServ: NavController,
+    constructor(private svrSolicitud: SolicitudService, private platform: Platform, private nvrServ: NavController, private dataService: DataService,
                 private svrStorage: StorageAppService, private svrNoti: PushNotificationService) {
     }
 
@@ -81,11 +82,13 @@ export class PedidoPage implements OnInit {
 
     eliminar(item) {
         this.lstDetalle.splice(item, 1);
+        this.dataService.lstPedido$.emit(this.lstDetalle);
         this.svrStorage.setStorageObject(this.lstDetalle, 'DetalleSolicitud');
     }
 
     private eliminarListaPedido() {
         this.lstDetalle = [];
+        this.dataService.lstPedido$.emit(this.lstDetalle);
         this.svrStorage.setStorageObject(this.lstDetalle, 'DetalleSolicitud');
     }
 
