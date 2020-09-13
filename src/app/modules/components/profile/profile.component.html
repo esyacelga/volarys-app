@@ -51,7 +51,7 @@
                     <ion-item color="dark">
                         <ion-label position="floating">Sector de domicilio</ion-label>
                         <ion-select ngModel="modeloPersonaTipoUsuario.persona.sector" formControlName="sector"
-                                    value="sector._id" okText="Okay" cancelText="Dismiss">
+                                    value="sector._id" okText="Ok" cancelText="Cancelar">
                             <ion-select-option *ngFor="let sector  of lstSectores"
                                                value="{{sector._id}}">{{sector.descripcion |uppercase}}
                             </ion-select-option>
@@ -107,7 +107,7 @@
             <ion-button
                     type="submit"
                     color="warning"
-                    expand="block">Actualizar Perfil
+                    expand="block">Actualizar información personal
             </ion-button>
             <ion-button (click)="cerrrarPanel()"
                         color="primary"

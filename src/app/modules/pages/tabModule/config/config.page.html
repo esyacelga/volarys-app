@@ -29,8 +29,8 @@
                 <ion-icon slot="start" *ngIf="!notificacion.like" name="thumbs-down"></ion-icon>
                 <small *ngIf="!notificacion.esServicio">{{notificacion.displayName}}{{',  '}}{{notificacion.titulo}}{{'  '}}{{notificacion.nombreSegmento| uppercase}}</small>
 
-                <small *ngIf="notificacion.esServicio && notificacion.like">{{notificacion.displayName}}{{', tubo experiencia positiva '}}{{' con el servicio de: '}} {{notificacion.nombreSegmento | uppercase}}</small>
-                <small *ngIf="notificacion.esServicio && !notificacion.like">{{notificacion.displayName}}{{', tubo experiencia negativa '}}{{' con el servicio de: '}} {{notificacion.nombreSegmento | uppercase}}</small>
+                <small *ngIf="notificacion.esServicio && notificacion.like">{{notificacion.displayName}}{{', recomienda el servicio de: '}} {{notificacion.nombreSegmento | uppercase}}</small>
+                <small *ngIf="notificacion.esServicio && !notificacion.like">{{notificacion.displayName}}{{', no recomienda servicio de: '}} {{notificacion.nombreSegmento | uppercase}}</small>
 
                 <ion-avatar slot="end">
                     <img [src]="(notificacion.portada | imagen: notificacion.idSegmento )| urlSanitizer">

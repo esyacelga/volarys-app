@@ -128,7 +128,7 @@ export class ArticuloSlideComponent implements OnInit {
         await this.svrSolicitud.getDetalleSolicitud();
         const lstDetalleEmmiter: SolcitudDetalleModel[] = this.svrSolicitud.lstDetalle;
         this.dataService.lstPedido$.emit(lstDetalleEmmiter);
-        this.utilSvr.presentToast('Este artículo se ha agregado a la lista, para continuar con la compra debe ir a la sección pedidos ', COLOR_TOAST_MORADO, 'top', DOBLE_DURATION_TOAST);
+        this.utilSvr.presentToast('Este artículo se ha agregado a la lista de pedidos', COLOR_TOAST_MORADO, 'top', DOBLE_DURATION_TOAST);
     }
 
 

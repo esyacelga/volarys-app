@@ -17,9 +17,11 @@ export const OBTENER_TODOS_PERSONA_TIPO_USUARIO = 'tipoUsuarioPersona/obtenerTod
 export const OBTENER_TODOS_PERSONA_TIPO_USUARIO_POR_PERSONA = 'tipoUsuarioPersona/ObtenerPorPersona';
 export const OBTENER_TODOS_PERSONA_TIPO_USUARIO_POR_CORREO = 'tipoUsuarioPersona/BuscarPersonaCorreo';
 export const OBTENER_TODOS_PERSONA_TIPO_USUARIO_POR_TIPO_USUARIO = 'tipoUsuarioPersona/ObtenerPorTipoUsuario';
-
+export const OBTENER_PEDIDOS_POR_USUARIO = 'solicitud/obtenerPedidoUsuario';
 export const OBTENER_TODOS_SEGMENTOS = 'articuloSegmento/obtenerTodosArticuloSegmento';
 export const OBTENER_TODOS_ARTICULOS = 'articulo/obtenerTodos';
 export const OBTENER_TODOS_DISPONIBILIDAD = 'disponibilidadRoute/obtenerTodos';
 export const OBTENER_TODOS_OBTENER_DISPONIBILIDAD = 'disponibilidadRoute/ObtenerDisponibilidad';
 export const OBTENER_TODOS_POR_TIPO_ARTICULO = 'articuloSegmento/obtenerPorTipoArticulo';
+export const OBTENER_TODOS_PARMETROS = 'parametro/obtenerTodos';
+export const OBTENER_PARAMETRO_POR_CODIGO = 'parametro/obtenerParametroPorCodigo';

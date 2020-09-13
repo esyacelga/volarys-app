@@ -59,7 +59,7 @@ export class ProfileComponent implements OnInit {
             ])),
             identificacion: new FormControl('', Validators.compose([
                 Validators.minLength(9),
-                Validators.maxLength(10)
+                Validators.maxLength(14)
             ])),
 
             fechaNacimiento: new FormControl('', Validators.compose([
@@ -122,6 +122,7 @@ export class ProfileComponent implements OnInit {
             const objTipoUsuarioPersona: ModeloTipoUsuarioPersona = (await this.svtTipoUsuariPersona.obtenerPorCorreo(this.modeloPersonaTipoUsuario.persona.correo) as ModeloTipoUsuarioPersona);
             this.svrStorage.eliminarTodo();
             this.svrStorage.setStorageObject(objTipoUsuarioPersona, 'usuario');
+            this.modal.dismiss();
         } else {
             this.util.presentToast('Por favor ingrese la información solicitada', COLOR_TOAST_DARK);
         }

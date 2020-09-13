@@ -5,6 +5,7 @@
     <author email="esyacelga@hotmail.com" href="http://ionicframework.com/">Volarys</author>
     <content src="index.html" />
     <access origin="*" />
+    <access launch-external="yes" origin="whatsapp://*" />
     <allow-navigation href="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />

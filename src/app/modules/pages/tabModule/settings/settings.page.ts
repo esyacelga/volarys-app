@@ -5,6 +5,8 @@ import {Util} from '../../../system/generic/classes/util';
 import {ProfileComponent} from '../../../components/profile/profile.component';
 import {Facebook} from '@ionic-native/facebook/ngx';
 import {COLOR_TOAST_PRIMARY, COLOR_TOAST_WARNING} from '../../../system/generic/classes/constant';
+import {ParametroService} from '../../../services/common/parametro.service';
+import {ParametroInterface} from '../../../interfaces/common/ParametroInterface';
 
 @Component({
     selector: 'app-tab3',
@@ -12,13 +14,16 @@ import {COLOR_TOAST_PRIMARY, COLOR_TOAST_WARNING} from '../../../system/generic/
     styleUrls: ['settings.page.scss']
 })
 export class SettingsPage implements OnInit {
-    panelActivo = true;
+    public panelActivo = true;
+    public parametro: ParametroInterface;
+    public numeroContacto: string;
 
     constructor(private svrStorage: StorageAppService,
                 private modalCtrl: ModalController,
                 private platform: Platform,
                 private svrFB: Facebook,
                 private util: Util,
+                private svrParametro: ParametroService,
                 private navCtrl: NavController) {
     }
 
@@ -45,7 +50,9 @@ export class SettingsPage implements OnInit {
     }
 
 
-    ngOnInit() {
+    async ngOnInit() {
+        this.parametro = (await this.svrParametro.obtenerParametroPorCodigo('NUMERO_TELEFONO_WATSUP') as ParametroInterface);
+        this.numeroContacto = 'whatsapp://send?phone=' + this.parametro.valor + '';
     }
 
 }
