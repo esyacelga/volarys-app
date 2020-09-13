@@ -6,8 +6,13 @@ import {RequestOptions} from '../../system/generic/classes/RequestOptions';
 import {COLOR_TOAST_SUCCESS} from '../../system/generic/classes/constant';
 import {CRUD_ACTUALIZAR_SOLICITUD, CRUD_SOLICITUD} from '../../constantes/ConstanteTransaccional';
 import {Articulo} from '../../classes/mensajeria/Articulo';
-import {OBTENER_PEDIDOS, OBTENER_PEDIDOS_USUARIO} from '../../constantes/ConstanteConsulta';
+import {
+    OBTENER_PEDIDOS,
+    OBTENER_PEDIDOS_POR_USUARIO,
+    OBTENER_PEDIDOS_USUARIO
+} from '../../constantes/ConstanteConsulta';
 import {Pedido} from '../../classes/mensajeria/Pedido';
+import {PedidoInterface} from "../../interfaces/mensajeria/PedidoInterface";
 
 
 @Injectable({
@@ -46,6 +51,12 @@ export class SolicitudService {
     async obtenerPedidoPorUsuario(idUsuario) {
         const requestOptions = new RequestOptions();
         const data: Pedido[] = (await this.genericService.servicioRestGenericoGet({}, OBTENER_PEDIDOS_USUARIO, requestOptions)) as Pedido[];
+        return data;
+    }
+
+    async obtenerPedidosPotUsuario(usuario: string) {
+        const requestOptions = new RequestOptions();
+        const data: PedidoInterface[] = (await this.genericService.servicioRestGenericoGet({usuario}, OBTENER_PEDIDOS_POR_USUARIO, requestOptions)) as PedidoInterface[];
         return data;
     }
 
