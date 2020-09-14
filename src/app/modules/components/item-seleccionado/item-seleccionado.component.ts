@@ -19,7 +19,7 @@ export class ItemSeleccionadoComponent implements OnInit {
     lstArticulo: Articulo[];
 
 
-    constructor(private svrSegmentoAticulo: SegmentoService, private svrArticulo: ArticuloService, private svrStorage: StorageAppService,) {
+    constructor(private svrSegmentoAticulo: SegmentoService, private svrArticulo: ArticuloService, private svrStorage: StorageAppService) {
     }
 
 

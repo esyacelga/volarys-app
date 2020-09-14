@@ -50,7 +50,7 @@ export class SolicitudService {
 
     async obtenerPedidoPorUsuario(idUsuario) {
         const requestOptions = new RequestOptions();
-        const data: Pedido[] = (await this.genericService.servicioRestGenericoGet({}, OBTENER_PEDIDOS_USUARIO, requestOptions)) as Pedido[];
+        const data: PedidoInterface[] = (await this.genericService.servicioRestGenericoGet({}, OBTENER_PEDIDOS_USUARIO, requestOptions)) as PedidoInterface[];
         return data;
     }
 

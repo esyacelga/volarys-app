@@ -16,6 +16,8 @@ import {CommentComponent} from './comment-component/comment.component';
 import {ItemCommentModule} from './comment-component/item-comment.module';
 import {ProfileModule} from './profile/profile.module';
 import {ImageModalPageModule} from './modals/image-modal/image-modal.module';
+import {HistorialComprasModule} from './historial-compras/historial-compras.module';
+import {HistorialComprasComponent} from './historial-compras/historial-compras.component';
 
 
 @NgModule({
@@ -34,8 +36,10 @@ import {ImageModalPageModule} from './modals/image-modal/image-modal.module';
         ReactiveFormsModule,
         IonicModule,
         ProfileModule,
+        HistorialComprasModule,
 
-    ], entryComponents: [CommentComponent, ProfileComponent]
+    ], entryComponents: [CommentComponent, ProfileComponent, HistorialComprasComponent]
 })
+
 export class ComponentModule {
 }

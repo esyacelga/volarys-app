@@ -6,8 +6,9 @@ import {PushNotificationService} from '../../../system/generic/service/push-noti
 import {MensajeOneSignal} from '../../../system/generic/classes/MensajeOneSignal';
 import {ObjetoTipoUsuarioPersona} from '../../../classes/persona/ObjetoTipoUsuarioPersona';
 import {GRUPO_ADMINISTRADOR} from '../../../system/generic/classes/constant';
-import {NavController, Platform} from '@ionic/angular';
+import {ModalController, NavController, Platform} from '@ionic/angular';
 import {DataService} from '../../../services/mensajeria/data.service';
+import {HistorialComprasComponent} from "../../../components/historial-compras/historial-compras.component";
 
 @Component({
     selector: 'app-tab2',
@@ -19,7 +20,8 @@ export class PedidoPage implements OnInit {
     lstDetalle: SolcitudDetalleModel[] = [];
     sumatoria = 0;
 
-    constructor(private svrSolicitud: SolicitudService, private platform: Platform, private nvrServ: NavController, private dataService: DataService,
+    constructor(private svrSolicitud: SolicitudService, private modalCtrl: ModalController,
+                private platform: Platform, private nvrServ: NavController, private dataService: DataService,
                 private svrStorage: StorageAppService, private svrNoti: PushNotificationService) {
     }
 
@@ -29,6 +31,15 @@ export class PedidoPage implements OnInit {
         this.lstDetalle = [];
         this.transform([]);
         this.eliminarListaPedido();
+    }
+
+    public async abrirListaPedidos() {
+        const modal = await this.modalCtrl.create({
+            component: HistorialComprasComponent,
+            componentProps: {title: 's', tipoError: 's', mensaje: 'mensajeError'}
+        });
+        await modal.present();
+        const {data} = await modal.onDidDismiss();
     }
 
 
