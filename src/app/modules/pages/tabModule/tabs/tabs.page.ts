@@ -20,6 +20,10 @@ export class TabsPage implements OnInit {
     constructor(private dataService: DataService, private svrSolicitud: SolicitudService, private svrParametro: ParametroService,) {
     }
 
+    public abrirChat(numero) {
+        window.open(numero, '_system');
+    }
+
     async ngOnInit() {
         this.parametro = (await this.svrParametro.obtenerParametroPorCodigo('NUMERO_TELEFONO_WATSUP') as ParametroInterface);
         this.numeroContacto = 'whatsapp://send?phone=' + this.parametro.valor + '';

@@ -14,7 +14,7 @@
             <ion-label>Notificaciones</ion-label>
         </ion-tab-button>
 
-        <ion-tab-button [href]="numeroContacto | urlSanitizer">
+        <ion-tab-button (click)="abrirChat(numeroContacto)">
             <fa-icon [icon]="wstp" size="2x"></fa-icon>
             <ion-label>Whatsapp</ion-label>
         </ion-tab-button>
