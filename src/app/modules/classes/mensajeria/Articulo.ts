@@ -12,6 +12,7 @@ export class Articulo {
     public coords: string;
     public esServicio: false;
     public permiteComentar: false;
+    public ocultarBotonSolicitar: false;
     public esBanner: false;
     public imgs?: string[];
     public conteoLike = 0;

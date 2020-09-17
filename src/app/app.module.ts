@@ -21,7 +21,14 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {firebaseConfig} from '../environments/environment';
 import {Facebook} from '@ionic-native/facebook/ngx';
 import {Network} from '@ionic-native/network/ngx';
-import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
+import {PhotoViewer} from '@ionic-native/photo-viewer/ngx';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {library} from '@fortawesome/fontawesome-svg-core';
+import {fab} from '@fortawesome/free-brands-svg-icons';
+import {fas} from '@fortawesome/free-solid-svg-icons';
+import {far} from '@fortawesome/free-regular-svg-icons';
+
+library.add(fab, far, fas);
 
 @NgModule({
     declarations: [AppComponent, MenuComponent],
@@ -29,6 +36,7 @@ import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
     imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, RestConectionModule,
         IonicStorageModule.forRoot(), AngularFireAuthModule, AngularFireModule.initializeApp(firebaseConfig), AngularFirestoreModule],
     providers: [
+        FontAwesomeModule,
         Network,
         PhotoViewer,
         Facebook,

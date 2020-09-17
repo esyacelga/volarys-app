@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {StorageAppService} from '../../system/generic/service/storage-app.service';
 import {ModeloTipoUsuarioPersona} from '../../classes/persona/TipoUsuarioPersona';
 import {NavController} from '@ionic/angular';
+import {faWhatsapp} from '@fortawesome/free-brands-svg-icons/faWhatsapp';
 
 @Component({
     selector: 'app-imagen-usuario',
@@ -9,6 +10,7 @@ import {NavController} from '@ionic/angular';
     styleUrls: ['./imagen-usuario.component.scss'],
 })
 export class ImagenUsuarioComponent implements OnInit {
+    wstp = faWhatsapp;
     modeloPersonaTipoUsuario: ModeloTipoUsuarioPersona;
     photo = '';
     displayName = '';

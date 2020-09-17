@@ -18,6 +18,7 @@ import {ProfileModule} from './profile/profile.module';
 import {ImageModalPageModule} from './modals/image-modal/image-modal.module';
 import {HistorialComprasModule} from './historial-compras/historial-compras.module';
 import {HistorialComprasComponent} from './historial-compras/historial-compras.component';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import {HistorialComprasComponent} from './historial-compras/historial-compras.c
         ItemCommentModule,
         ImageModalPageModule,
         CommonModule,
+        FontAwesomeModule,
         PipesModule,
         FormsModule,
         ReactiveFormsModule,

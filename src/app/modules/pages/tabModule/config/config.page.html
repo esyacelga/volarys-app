@@ -4,8 +4,8 @@
 <ion-content fullscreen color="dark">
     <div *ngFor="let notificacion of lsNotificaciones" color="light">
 
-        <ion-card color="light" *ngIf="notificacion.tipoNotificacon===0 && notificacion.esServicio">
-                <ion-item color="light">
+        <ion-card color="secondary" *ngIf="notificacion.tipoNotificacon===0 && notificacion.esServicio">
+                <ion-item color="secondary">
                     <ion-avatar slot="start">
                         <img [src]="notificacion.picture|urlSanitizer">
                     </ion-avatar>
@@ -23,8 +23,8 @@
                 </ion-card-content>
         </ion-card>
 
-        <ion-card color="light" *ngIf="notificacion.tipoNotificacon===1">
-            <ion-item color="light">
+        <ion-card color="secondary" *ngIf="notificacion.tipoNotificacon===1">
+            <ion-item color="secondary">
                 <ion-icon slot="start" *ngIf="notificacion.like" name="thumbs-up"></ion-icon>
                 <ion-icon slot="start" *ngIf="!notificacion.like" name="thumbs-down"></ion-icon>
                 <small *ngIf="!notificacion.esServicio">{{notificacion.displayName}}{{',  '}}{{notificacion.titulo}}{{'  '}}{{notificacion.nombreSegmento| uppercase}}</small>
@@ -38,8 +38,8 @@
             </ion-item>
         </ion-card>
 
-        <ion-card color="light" *ngIf="notificacion.tipoNotificacon===2">
-            <ion-item color="light">
+        <ion-card color="secondary" *ngIf="notificacion.tipoNotificacon===2">
+            <ion-item color="secondary">
                 <ion-avatar slot="start">
                     <img src="/assets/avatars/logo-volarys.png">
                 </ion-avatar>
@@ -54,8 +54,8 @@
             </ion-card-content>
         </ion-card>
 
-        <ion-card color="light" *ngIf="notificacion.tipoNotificacon===3 && notificacion.playerId === playerId">
-            <ion-item color="light">
+        <ion-card color="secondary" *ngIf="notificacion.tipoNotificacon===3 && notificacion.playerId === playerId">
+            <ion-item color="secondary">
                 <ion-avatar slot="start">
                     <img src="/assets/avatars/logo-volarys.png">
                 </ion-avatar>

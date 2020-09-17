@@ -5,12 +5,14 @@
                 <ion-card-subtitle>{{segmento.descripcion | uppercase }}</ion-card-subtitle>
             </ion-card-header>
             <ion-slide class="image-slide">
-                <ion-button fill="clear" class="profilebutton" color="primary" (click)="zoomImage(data.portada,data.articuloSegmento._id)">
-                    <ion-icon slot="icon-only" name="search-outline"></ion-icon>
+                <ion-button fill="clear" *ngIf="!data.esServicio" class="profilebutton" color="success"
+                            (click)="zoomImage(data.portada,data.articuloSegmento._id)">
+                    <ion-icon slot="icon-only" name="code-working"></ion-icon>
                 </ion-button>
-                <img [src]="(data.portada | imagen: data.articuloSegmento._id )  |urlSanitizer" class="thumb-img" >
+                <img [src]="(data.portada | imagen: data.articuloSegmento._id )  |urlSanitizer" class="thumb-img">
             </ion-slide>
-            <ion-card color="shade">
+            <ion-card color="tertiary">
+                <br/>
                 <div *ngIf="!data.esBanner && !data.verObservacion">
                     <ion-label *ngIf="!data.esServicio">
                         <h3><strong>
@@ -36,46 +38,40 @@
                         {{data.obsevacion}}
                     </ion-card-content>
                 </div>
-                <!--{{'http://164.90.231.150:3000/articulo/imagen/' + data.articuloSegmento._id + '/' + data.portada}}
-                <ion-button color="warning"
-                            (click)="zoomImage('http://164.90.231.150:3000/articulo/imagen/'+data.articuloSegmento._id+'/'+data.portada)"
-                            expand="block">VER
-                </ion-button>-->
-                <ion-button color="warning" (click)="seleccionarArticulo(data)" expand="block">SOLICITAR
+                <ion-button color="warning" *ngIf="!data.ocultarBotonSolicitar" (click)="seleccionarArticulo(data)"
+                            expand="block">SOLICITAR
                 </ion-button>
-                <!--<ion-button color="warning" (click)="abrirModalImage(data.portada,data.articuloSegmento._id )"
-                            expand="block">ABRIR DETALLE
-                </ion-button>-->
-                <ion-card color="dark" *ngIf="!data.permiteComentar">
-                    <ion-row>
-                        <ion-col>
-                            <ion-button fill="clear" size="small" (click)="actualizarLike(data,true)">
-                                <ion-icon slot="start" name="thumbs-up"></ion-icon>
-                                <div>{{ data.conteoLike }} Me Gusta</div>
-                            </ion-button>
-                        </ion-col>
-                        <ion-col>
-                            <ion-button fill="clear" size="small" (click)="actualizarLike(data,false)">
-                                <ion-icon slot="start" name="thumbs-down"></ion-icon>
-                                <div>{{ data.conteoDisLike}} No me gusta
-                                </div>
-                            </ion-button>
-                        </ion-col>
-                    </ion-row>
-                </ion-card>
+
+            </ion-card>
+            <ion-card color="dark" *ngIf="!data.permiteComentar">
+                <ion-row>
+                    <ion-col>
+                        <ion-button fill="clear" size="small" (click)="actualizarLike(data,true)">
+                            <ion-icon slot="start" name="thumbs-up"></ion-icon>
+                            <div>{{ data.conteoLike }} Lo recomiendo</div>
+                        </ion-button>
+                    </ion-col>
+                    <ion-col>
+                        <ion-button fill="clear" size="small" (click)="actualizarLike(data,false)">
+                            <ion-icon slot="start" name="thumbs-down"></ion-icon>
+                            <div>{{ data.conteoDisLike}} No lo recomiendo
+                            </div>
+                        </ion-button>
+                    </ion-col>
+                </ion-row>
             </ion-card>
             <ion-card color="dark" *ngIf="data.permiteComentar">
                 <ion-row>
                     <ion-col>
                         <ion-button fill="clear" size="small" (click)="actualizarLike(data,true)">
                             <ion-icon slot="start" name="thumbs-up"></ion-icon>
-                            <div>{{ data.conteoLike }} Me Gusta</div>
+                            <div>{{ data.conteoLike }} Lo recomiendo</div>
                         </ion-button>
                     </ion-col>
                     <ion-col>
                         <ion-button fill="clear" size="small" (click)="actualizarLike(data,false)">
                             <ion-icon slot="start" name="thumbs-down"></ion-icon>
-                            <div>{{ data.conteoDisLike}} No me gusta
+                            <div>{{ data.conteoDisLike}} No lo recomiendo
                             </div>
                         </ion-button>
                     </ion-col>
@@ -83,7 +79,7 @@
                         <ion-button fill="clear" size="small" (click)="abrirModal(data)">
                             <ion-icon slot="start" name="chatbox-ellipses-outline"></ion-icon>
                             <div>{{ data.conteoComentarios}}
-                                Commentar
+                                Comente nuestro servicio
                             </div>
                         </ion-button>
                     </ion-col>

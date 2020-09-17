@@ -8,7 +8,7 @@ import {SegmentoArticuloPipe} from './segmento-articulo.pipe';
 import {SumatoriaArticulosPipe} from './sumatoria-articulos.pipe';
 import {FiltroPedidoPipe} from './filtro-pedido.pipe';
 import {UrlSanitizerPipe} from './url-sanitizer.pipe';
-import {TipoArticuloPipe} from "./tipo-articulo.pipe";
+import {TipoArticuloPipe} from './tipo-articulo.pipe';
 
 @NgModule({
     declarations: [
