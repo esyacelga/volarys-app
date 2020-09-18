@@ -46,18 +46,6 @@
                         </ion-label>
                     </div>
                 </div>
-                <!--<div *ngIf="data.verObservacion">
-                    <ion-label>
-                        <h3>
-                            <strong>
-                                {{data.descripcion | uppercase}}
-                            </strong>
-                        </h3>
-                    </ion-label>
-                    <ion-card-content class="card-center">
-                        {{data.obsevacion}}
-                    </ion-card-content>
-                </div>-->
                 <ion-button color="solicitar" *ngIf="!data.ocultarBotonSolicitar" (click)="seleccionarArticulo(data)"
                             expand="block">Agregar a pedidos
                 </ion-button>

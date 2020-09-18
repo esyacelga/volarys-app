@@ -25,15 +25,14 @@
             </ion-item-options>
         </ion-item-sliding>
 
-
-        <ion-button expand="block" *ngIf="lstDetalle.length>0" color="primary" slot="end"
+        <ion-button expand="block" *ngIf="lstDetalle.length>0" color="solicitar" slot="end"
                     (click)="registrarSolicitud()">
             SOLCITAR PEDIDO A VOLARYS
         </ion-button>
         <ion-button expand="block" *ngIf="lstDetalle.length>0" color="warning" slot="end" (click)="eliminarLista()">
             BORRAR LISTA DE PEDIDOS
         </ion-button>
-        <ion-button expand="block" color="tertiary" slot="end" (click)="abrirListaPedidos()">
+        <ion-button expand="block" color="vermas" slot="end" (click)="abrirListaPedidos()">
             VER HISTORIAL DE COMPRAS
         </ion-button>
 

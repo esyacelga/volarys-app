@@ -18,6 +18,8 @@ export const COLOR_TOAST_ERROR = 'danger';
 export const COLOR_TOAST_MEDIUM = 'medium';
 export const COLOR_TOAST_DARK = 'dark';
 export const COLOR_TOAST_MORADO = 'tertiary';
+export const COLOR_TOAST_CUSTOM_MORADO = 'solicitar';
+export const COLOR_TOAST_VER_MAS = 'vermas';
 
 
 // Contantes servicios rest

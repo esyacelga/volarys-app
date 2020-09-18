@@ -15,7 +15,16 @@
     <ion-list *ngFor="let pedido of lstPedidosTotalizado">
         <ion-card color="primary">
             <ion-item-divider color="primary">
-                <ion-label>Fecha Pedido:{{pedido.fechaCreacion| date : 'dd/MM/yyyy H:mm a'}}</ion-label>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col>
+                            <ion-label>Fecha Pedido</ion-label>
+                        </ion-col>
+                        <ion-col class="ion-text-end">
+                            <ion-label>{{pedido.fechaCreacion| date : 'dd/MM/yyyy H:mm a'}}</ion-label>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
             </ion-item-divider>
             <ion-item-group color="secondary">
                 <ion-item-sliding *ngFor="let detalle of pedido.solicitudDetalle;">
@@ -27,14 +36,16 @@
                 </ion-item-sliding>
             </ion-item-group>
             <ion-item-divider color="primary">
-                <ion-row>
-                    <ion-col>
-                        Total:
-                    </ion-col>
-                    <ion-col class="ion-text-end">
-                        {{pedido.total| currency}}
-                    </ion-col>
-                </ion-row>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col>
+                            Total:
+                        </ion-col>
+                        <ion-col class="ion-text-end">
+                            {{pedido.total| currency}}
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
             </ion-item-divider>
         </ion-card>
     </ion-list>
