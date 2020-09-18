@@ -1,12 +1,18 @@
 <ion-header>
-    <ion-item color="primary">
-        <ion-avatar slot="start">
-            <img src="/assets/avatars/logo-volarys.png">
-        </ion-avatar>
-    </ion-item>
+    <ion-toolbar color="primary">
+        <ion-buttons  slot="start" (click)="modal.dismiss()">
+            <ion-back-button defaultHref=""></ion-back-button>
+        </ion-buttons>
+        <ion-item color="primary">
+            <ion-avatar slot="end">
+                <img src="/assets/avatars/logo-volarys.png">
+            </ion-avatar>
+        </ion-item>
+    </ion-toolbar>
 </ion-header>
 <ion-content fullscreen color="dark">
     <ion-card color="secondary">
+
         <ion-card-header>
             <ion-card-subtitle
                     *ngIf="objArticulo.articuloSegmento">{{objArticulo.articuloSegmento.descripcion | uppercase}}</ion-card-subtitle>
@@ -16,9 +22,41 @@
                 </strong>
             </ion-card-title>
         </ion-card-header>
+
         <ion-item color="secondary" *ngIf="objArticulo.obsevacion && objArticulo.obsevacion !==''">
             <ion-card-content>
                 {{objArticulo.obsevacion}}
+            </ion-card-content>
+        </ion-item>
+        <ion-item color="secondary" *ngIf="objArticulo.horaInicio">
+            <ion-card-content>
+                <strong>
+                    Horario de atención:
+                </strong>
+                Desde:
+                <strong>
+                    {{objArticulo.horaInicio| date:'h:mm a'}}
+                </strong>
+                Hasta:
+                <strong>
+                    {{objArticulo.horaFin| date:'h:mm a'}}
+                </strong>
+            </ion-card-content>
+        </ion-item>
+        <ion-item color="secondary" *ngIf="objArticulo.obsevacionLarga && objArticulo.obsevacionLarga !==''">
+            <ion-card-content>
+                {{objArticulo.obsevacionLarga}}
+            </ion-card-content>
+        </ion-item>
+        <ion-item color="secondary" *ngIf="objArticulo.esServicio && objArticulo.articuloSegmento.esServicioTransporte">
+            <ion-card-content>
+                <ion-row>
+                    <ion-col class="ion-text-end">
+                        <ion-button color="success" (click)="abrirChat(numeroContacto)">
+                            <fa-icon slot="icon-only" [icon]="wstp" size="2x"></fa-icon>
+                        </ion-button>
+                    </ion-col>
+                </ion-row>
             </ion-card-content>
         </ion-item>
 
@@ -42,31 +80,17 @@
             </ion-card-content>
         </ion-item>
 
-        <ion-item color="secondary" *ngIf="objArticulo.horaInicio">
-            <ion-card-content>
-                <strong>
-                    Horario de atención:
-                </strong>
-                Desde:
-                <strong>
-                    {{objArticulo.horaInicio| date:'h:mm a'}}
-                </strong>
-                Hasta:
-                <strong>
-                    {{objArticulo.horaFin| date:'h:mm a'}}
-                </strong>
-            </ion-card-content>
-        </ion-item>
 
         <!--Cuando es transporte-->
         <ion-item color="secondary"
                   *ngIf="objArticulo.esServicio && objArticulo.articuloSegmento.esServicioTransporte">
             <ion-card-content>
                 <small>
-                    * El precio será acordado con el transportista, el valor dependerá de la distancia del viaje
+                    * El precio será acordado con el transportista dependiendo de la distancia del viaje
                 </small>
             </ion-card-content>
         </ion-item>
+
     </ion-card>
 </ion-content>
 

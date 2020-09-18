@@ -18,6 +18,9 @@ export class Articulo {
     public conteoComentarios = 0;
     public verObservacion: false;
     public obsevacion: string;
+    public obsevacionLarga: string;
+    public horaInicio: Date;
+    public horaFin: Date;
 }
 
 
@@ -39,6 +42,7 @@ export class ObjetoArticulo {
     public conteoComentarios = 0;
     public verObservacion: false;
     public obsevacion: string;
+    public obsevacionLarga: string;
     public horaInicio: Date;
     public horaFin: Date;
 }

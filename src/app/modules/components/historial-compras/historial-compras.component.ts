@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {SolicitudService} from '../../services/mensajeria/solicitud.service';
-import {PedidoInterface} from '../../interfaces/mensajeria/PedidoInterface';
+import {PedidoInterface, PedidoTotalizado} from '../../interfaces/mensajeria/PedidoInterface';
 import {StorageAppService} from '../../system/generic/service/storage-app.service';
 import {ModeloTipoUsuarioPersona} from '../../classes/persona/TipoUsuarioPersona';
 import {ModalController, NavController} from '@ionic/angular';
@@ -12,6 +12,7 @@ import {ModalController, NavController} from '@ionic/angular';
 })
 export class HistorialComprasComponent implements OnInit {
     public lstPedidos: PedidoInterface[];
+    public lstPedidosTotalizado: PedidoTotalizado[] = [];
     private modeloPersonaTipoUsuario: ModeloTipoUsuarioPersona;
 
     constructor(private svrSolicitud: SolicitudService,
@@ -28,6 +29,9 @@ export class HistorialComprasComponent implements OnInit {
     async ngOnInit() {
         this.modeloPersonaTipoUsuario = (await this.svrStorage.loadStorageObject('usuario')) as ModeloTipoUsuarioPersona;
         this.lstPedidos = (await this.svrSolicitud.obtenerPedidosPotUsuario(this.modeloPersonaTipoUsuario.usuario._id) as PedidoInterface[]);
+        for (const item of this.lstPedidos) {
+            this.lstPedidosTotalizado.push(new PedidoTotalizado(item));
+        }
         console.log(this.lstPedidos);
     }
 }
