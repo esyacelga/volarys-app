@@ -1,6 +1,6 @@
 <ion-header>
     <ion-toolbar color="primary">
-        <ion-buttons  slot="start" (click)="modal.dismiss()">
+        <ion-buttons slot="start" (click)="modal.dismiss()">
             <ion-back-button defaultHref=""></ion-back-button>
         </ion-buttons>
         <ion-item color="primary">
@@ -62,23 +62,25 @@
 
 
         <!--Cuando no es transporte-->
-        <ion-item color="secondary"
-                  *ngIf="objArticulo.esServicio && !objArticulo.articuloSegmento.esServicioTransporte">
-            <ion-card-content>
-                <strong>
-                    Precio por servicio:
-                </strong>
-                {{objArticulo.unidadCosto| currency}}
-            </ion-card-content>
-        </ion-item>
-        <ion-item color="secondary" *ngIf="!objArticulo.esServicio">
-            <ion-card-content>
-                <strong>
-                    Precio por artículo:
-                </strong>
-                {{objArticulo.unidadCosto| currency}}
-            </ion-card-content>
-        </ion-item>
+        <div *ngIf="!objArticulo.esBanner" >
+            <ion-item color="secondary"
+                      *ngIf="objArticulo.esServicio && !objArticulo.articuloSegmento.esServicioTransporte">
+                <ion-card-content>
+                    <strong>
+                        Precio por servicio:
+                    </strong>
+                    {{objArticulo.unidadCosto| currency}}
+                </ion-card-content>
+            </ion-item>
+            <ion-item color="secondary" *ngIf="!objArticulo.esServicio">
+                <ion-card-content>
+                    <strong>
+                        Precio por artículo:
+                    </strong>
+                    {{objArticulo.unidadCosto| currency}}
+                </ion-card-content>
+            </ion-item>
+        </div>
 
 
         <!--Cuando es transporte-->

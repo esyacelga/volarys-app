@@ -7,7 +7,6 @@ import {Util} from '../../system/generic/classes/util';
 import {StorageAppService} from '../../system/generic/service/storage-app.service';
 import {
     COLOR_TOAST_CUSTOM_MORADO,
-    COLOR_TOAST_MORADO,
     COLOR_TOAST_PRIMARY,
     COLOR_TOAST_WARNING,
     DOBLE_DURATION_TOAST
@@ -109,8 +108,33 @@ export class ArticuloSlideComponent implements OnInit {
         const {data} = await modal.onDidDismiss();
     }
 
+    public validarFechas(item: ObjetoArticulo) {
+        if (!item.horaInicio) {
+            return true;
+        }
+        if (!item.horaFin) {
+            return true;
+        }
+        const fechaActual = new Date();
+        const horaActual = fechaActual.getHours();
+
+        const horaInicial = new Date(item.horaInicio).getHours();
+
+        const horaFinal = new Date(item.horaFin).getHours();
+
+        if ((horaInicial <= horaActual && horaActual <= horaFinal)) {
+            return true;
+        } else {
+            return false;
+        }
+        return;
+    }
 
     async seleccionarArticulo(item: ObjetoArticulo) {
+        if (!this.validarFechas(item)) {
+            this.utilSvr.presentToast('El servicio solicitado se encuentra fuera de horario', COLOR_TOAST_WARNING);
+            return;
+        }
         this.objArticulo = item;
         this.modeloPersonaTipoUsuario = (await this.svrStorage.loadStorageObject('usuario')) as ModeloTipoUsuarioPersona;
         if (!this.modeloPersonaTipoUsuario.persona.numeroTelefonoCelular) {

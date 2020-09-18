@@ -38,11 +38,17 @@
                                 {{data.descripcion | uppercase}}
                             </strong>
                         </h3>
+
                     </ion-label>
+                    {{data.obsevacion}}
                     <div *ngIf="data.horaInicio">
+                        <small>
                             Horario de atención
+                        </small>
                         <ion-label class="card-center">
-                             {{data.horaInicio| date:'h:mm a'}} -{{data.horaFin| date:'h:mm a'}}
+                            <small>
+                            {{data.horaInicio| date:'h:mm a'}} -{{data.horaFin| date:'h:mm a'}}
+                            </small>
                         </ion-label>
                     </div>
                 </div>
