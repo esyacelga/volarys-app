@@ -19,6 +19,8 @@ import {ImageModalPageModule} from './modals/image-modal/image-modal.module';
 import {HistorialComprasModule} from './historial-compras/historial-compras.module';
 import {HistorialComprasComponent} from './historial-compras/historial-compras.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {VerMasPageModule} from './ver-mas/ver-mas.module';
+import {VerMasPage} from './ver-mas/ver-mas.page';
 
 
 @NgModule({
@@ -39,8 +41,9 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
         IonicModule,
         ProfileModule,
         HistorialComprasModule,
+        VerMasPageModule,
 
-    ], entryComponents: [CommentComponent, ProfileComponent, HistorialComprasComponent]
+    ], entryComponents: [CommentComponent, ProfileComponent, HistorialComprasComponent, VerMasPage]
 })
 
 export class ComponentModule {

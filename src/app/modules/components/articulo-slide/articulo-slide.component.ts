@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Segmento} from '../../classes/mensajeria/Segmento';
-import {Articulo} from '../../classes/mensajeria/Articulo';
+import {Articulo, ObjetoArticulo} from '../../classes/mensajeria/Articulo';
 import {SolcitudDetalleModel} from '../../classes/mensajeria/SolcitudCabeceraModel';
 import {SolicitudService} from '../../services/mensajeria/solicitud.service';
 import {Util} from '../../system/generic/classes/util';
@@ -19,11 +19,11 @@ import {LikeDislike} from '../../classes/common/LikeDislike';
 import {Observable} from 'rxjs';
 import {ArticuloService} from '../../services/mensajeria/articulo.service';
 import {ProfileComponent} from '../profile/profile.component';
-import {ImageModalPage} from '../modals/image-modal/image-modal.page';
 import {PhotoViewer} from '@ionic-native/photo-viewer/ngx';
 import {environment} from '../../../../environments/environment';
 import {DataService} from '../../services/mensajeria/data.service';
 import {faExpandAlt} from '@fortawesome/free-solid-svg-icons';
+import {VerMasPage} from '../ver-mas/ver-mas.page';
 
 const URL = environment.url;
 
@@ -34,13 +34,13 @@ const URL = environment.url;
 })
 export class ArticuloSlideComponent implements OnInit {
     @Input() segmento: Segmento;
-    @Input() lstArticulo: Array<Articulo>;
+    @Input() lstArticulo: Array<ObjetoArticulo>;
     public wstp = faExpandAlt;
 
     public lstDetalle: SolcitudDetalleModel[] = [];
     public comentarioActivado = false;
     public modeloPersonaTipoUsuario: ModeloTipoUsuarioPersona;
-    private objArticulo: Articulo;
+    private objArticulo: ObjetoArticulo;
     private conteoLike: Observable<number>;
     private conteoDisLike: Observable<number>;
     private conteoComentarios: Observable<number>;
@@ -78,23 +78,24 @@ export class ArticuloSlideComponent implements OnInit {
         });
         await modal.present();
         const {data} = await modal.onDidDismiss();
-        this.lstArticulo = (await this.svrArticulo.obtenerArticulos() as Array<Articulo>);
+        this.lstArticulo = (await this.svrArticulo.obtenerArticulos() as Array<ObjetoArticulo>);
     }
 
-    public async abrirModalImage(nombre, directorio) {
+    async verMasPanel(item: Articulo) {
         const modal = await this.modalCtrl.create({
-            component: ImageModalPage,
-            componentProps: {nombre, directorio}
+            component: VerMasPage,
+            componentProps: {
+                objArticulo: item
+            }
         });
         await modal.present();
         const {data} = await modal.onDidDismiss();
-        this.lstArticulo = (await this.svrArticulo.obtenerArticulos() as Array<Articulo>);
     }
 
     public async actualizarLike(item: Articulo, like: boolean) {
         let objLike: LikeDislike = new LikeDislike(this.modeloPersonaTipoUsuario.persona, item, like, true);
         objLike = (await this.svrLike.registar(objLike) as LikeDislike);
-        this.lstArticulo = (await this.svrArticulo.obtenerArticulosSinloading() as Array<Articulo>);
+        this.lstArticulo = (await this.svrArticulo.obtenerArticulosSinloading() as Array<ObjetoArticulo>);
         return objLike.articulo;
     }
 
@@ -108,7 +109,7 @@ export class ArticuloSlideComponent implements OnInit {
     }
 
 
-    async seleccionarArticulo(item: Articulo) {
+    async seleccionarArticulo(item: ObjetoArticulo) {
         this.objArticulo = item;
         this.modeloPersonaTipoUsuario = (await this.svrStorage.loadStorageObject('usuario')) as ModeloTipoUsuarioPersona;
         if (!this.modeloPersonaTipoUsuario.persona.numeroTelefonoCelular) {

@@ -3,5 +3,7 @@ export class Segmento {
     descripcion: string;
     tipoArticulo: string;
     estado: string;
+    esServicio: boolean;
+    esServicioTransporte: boolean;
 
 }
