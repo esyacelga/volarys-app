@@ -23,6 +23,7 @@ import {ImageModalPage} from '../modals/image-modal/image-modal.page';
 import {PhotoViewer} from '@ionic-native/photo-viewer/ngx';
 import {environment} from '../../../../environments/environment';
 import {DataService} from '../../services/mensajeria/data.service';
+import {faExpandAlt} from '@fortawesome/free-solid-svg-icons';
 
 const URL = environment.url;
 
@@ -34,6 +35,7 @@ const URL = environment.url;
 export class ArticuloSlideComponent implements OnInit {
     @Input() segmento: Segmento;
     @Input() lstArticulo: Array<Articulo>;
+    public wstp = faExpandAlt;
 
     public lstDetalle: SolcitudDetalleModel[] = [];
     public comentarioActivado = false;

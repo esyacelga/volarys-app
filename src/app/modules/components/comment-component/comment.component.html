@@ -31,21 +31,19 @@
     </ion-card>
 
 </ion-content>
-<ion-card color="dark">
-    <ion-footer color="dark" padding>
-        <ion-textarea color="light" [(ngModel)]="message" type="text" placeholder="Comentar .... "></ion-textarea>
-        <ion-toolbar>
-            <ion-buttons slot="start">
-                <ion-button (click)="cerrarMoal()" color="warning">
-                    Volver
-                </ion-button>
-            </ion-buttons>
-            <ion-buttons color="success" slot="end">
-                <ion-button [disabled]="!message" (click)="registrarComentario(message); message= null">
-                    <ion-icon color="success" slot="icon-only" name="send">
-                    </ion-icon>
-                </ion-button>
-            </ion-buttons>
-        </ion-toolbar>
-    </ion-footer>
-</ion-card>
+<ion-footer color="dark" padding>
+    <ion-toolbar color="dark">
+        <ion-textarea color="light" [(ngModel)]="message" type="text" placeholder="Ingrese su opinión .... "></ion-textarea>
+        <ion-buttons slot="start">
+            <ion-button (click)="cerrarMoal()" color="warning">
+                Volver
+            </ion-button>
+        </ion-buttons>
+        <ion-buttons color="success" slot="end">
+            <ion-button [disabled]="!message" (click)="registrarComentario(message); message= null">
+                <ion-icon color="success" slot="icon-only" name="send">
+                </ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-footer>

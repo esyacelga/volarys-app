@@ -3,8 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: true,
-  url: 'http://164.90.231.150:3000'
+  production: false,
+  url: 'http://localhost:3000'
 };
 
 export const firebaseConfig = {

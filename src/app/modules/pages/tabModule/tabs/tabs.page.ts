@@ -17,7 +17,7 @@ export class TabsPage implements OnInit {
     public numeroContacto: string;
     public parametro: ParametroInterface;
 
-    constructor(private dataService: DataService, private svrSolicitud: SolicitudService, private svrParametro: ParametroService,) {
+    constructor(private dataService: DataService, private svrSolicitud: SolicitudService, private svrParametro: ParametroService) {
     }
 
     public abrirChat(numero) {

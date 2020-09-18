@@ -7,7 +7,7 @@
             <ion-slide class="image-slide">
                 <ion-button fill="clear" *ngIf="!data.esServicio" class="profilebutton" color="success"
                             (click)="zoomImage(data.portada,data.articuloSegmento._id)">
-                    <ion-icon slot="icon-only" name="code-working"></ion-icon>
+                    <fa-icon [icon]="wstp"></fa-icon>
                 </ion-button>
                 <img [src]="(data.portada | imagen: data.articuloSegmento._id )  |urlSanitizer" class="thumb-img">
             </ion-slide>
@@ -15,15 +15,20 @@
                 <br/>
                 <div *ngIf="!data.esBanner && !data.verObservacion">
                     <ion-label *ngIf="!data.esServicio">
-                        <h3><strong>
-                            {{data.descripcion | uppercase}}
-                        </strong>
+                        <h3>
+                            <strong>
+                                {{data.descripcion | uppercase}}
+                            </strong>
                         </h3>
-                        <p>Costo unidad: {{data.unidadCosto | currency}}</p>
+                        <p>Costo por unidad: {{data.unidadCosto | currency}}</p>
                     </ion-label>
                     <ion-label *ngIf="data.esServicio">
-                        <h3>{{data.descripcion | uppercase}}</h3>
-                        <p>Costo Servicio: {{data.unidadCosto | currency}}</p>
+                        <h3>
+                            <strong>
+                                {{data.descripcion | uppercase}}
+                            </strong>
+                        </h3>
+                        <p>Costo por servicio: {{data.unidadCosto | currency}}</p>
                     </ion-label>
                 </div>
                 <div *ngIf="data.verObservacion">
@@ -38,9 +43,13 @@
                         {{data.obsevacion}}
                     </ion-card-content>
                 </div>
-                <ion-button color="warning" *ngIf="!data.ocultarBotonSolicitar" (click)="seleccionarArticulo(data)"
-                            expand="block">SOLICITAR
+                <ion-button color="solicitar" *ngIf="!data.ocultarBotonSolicitar" (click)="seleccionarArticulo(data)"
+                            expand="block">Agregar a la lista de pedidos
                 </ion-button>
+                <ion-button color="vermas" *ngIf="!data.ocultarBotonSolicitar" (click)="seleccionarArticulo(data)"
+                            expand="block">ver más
+                </ion-button>
+
 
             </ion-card>
             <ion-card color="dark" *ngIf="!data.permiteComentar">
