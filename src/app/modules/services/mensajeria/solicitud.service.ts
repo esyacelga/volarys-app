@@ -3,7 +3,7 @@ import {ExecuteCallProcedureService} from '../../system/generic/service/execute-
 import {StorageAppService} from '../../system/generic/service/storage-app.service';
 import {SolcitudCabeceraModel, SolcitudDetalleModel} from '../../classes/mensajeria/SolcitudCabeceraModel';
 import {RequestOptions} from '../../system/generic/classes/RequestOptions';
-import {COLOR_TOAST_SUCCESS, COLOR_TOAST_VER_MAS} from '../../system/generic/classes/constant';
+import {COLOR_TOAST_SUCCESS, COLOR_TOAST_VER_MAS, COLOR_TOAST_WARNING} from '../../system/generic/classes/constant';
 import {CRUD_ACTUALIZAR_SOLICITUD, CRUD_SOLICITUD} from '../../constantes/ConstanteTransaccional';
 import {Articulo} from '../../classes/mensajeria/Articulo';
 import {
@@ -36,7 +36,7 @@ export class SolicitudService {
         const requestOptions = new RequestOptions();
         requestOptions.presentarToast = true;
         requestOptions.successMessaje = 'Su solicitud a sido generada, por favor espere pronto nos comunicaremos con usted';
-        requestOptions.toastColor = COLOR_TOAST_VER_MAS;
+        requestOptions.toastColor = COLOR_TOAST_WARNING;
         const data = await this.genericService.servicioRestGenericoPost(solicitud, CRUD_SOLICITUD, requestOptions) as Articulo;
         return data;
     }

@@ -11,10 +11,12 @@ export class NotificacionMensajeDto {
     public nombreSegmento: string;
     public like: boolean;
     public esServicio: boolean;
+    public created: Date;
+
 
     constructor(id: string, displayName: string, picture: string, titulo: string, mensaje: string,
                 playerId: string, tipoNotificacon: number, portada: string,
-                idSegmento: string, nombreSegmento: string, like: boolean, esServicio: boolean) {
+                idSegmento: string, nombreSegmento: string, like: boolean, esServicio: boolean, created: Date) {
         this._id = id;
         this.displayName = displayName;
         this.picture = picture;
@@ -27,8 +29,10 @@ export class NotificacionMensajeDto {
         this.nombreSegmento = nombreSegmento;
         this.like = like;
         this.esServicio = esServicio;
+        this.created = created;
     }
 }
+
 
 export interface RespuestaPosts {
     ok: boolean;

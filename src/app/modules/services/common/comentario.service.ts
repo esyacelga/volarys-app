@@ -9,7 +9,7 @@ import {
     OBTENER_TODOS_NOTIFICACIONES
 } from '../../constantes/ConstanteTransaccional';
 import {ItemComment} from '../../classes/common/ItemComment';
-import {COLOR_TOAST_SUCCESS} from '../../system/generic/classes/constant';
+import {COLOR_TOAST_DARK} from '../../system/generic/classes/constant';
 
 
 @Injectable({
@@ -25,7 +25,7 @@ export class ComentarioService {
     async registar(comentario: ItemComment) {
         const requestOptions = new RequestOptions();
         requestOptions.successMessaje = 'Comentario Agregado';
-        requestOptions.toastColor = COLOR_TOAST_SUCCESS;
+        requestOptions.toastColor = COLOR_TOAST_DARK;
         requestOptions.presentarToast = true;
         const data = await this.genericService.servicioRestGenericoPost(comentario, CRUD_COMENTARIO, requestOptions) as ItemComment;
         return data;
@@ -34,7 +34,7 @@ export class ComentarioService {
     async eliminar(comentario: ItemComment) {
         const requestOptions = new RequestOptions();
         requestOptions.successMessaje = 'Comentario eliminado';
-        requestOptions.toastColor = COLOR_TOAST_SUCCESS;
+        requestOptions.toastColor = COLOR_TOAST_DARK;
         requestOptions.presentarToast = true;
         const data = await this.genericService.servicioRestGenericoGet(comentario, CRUD_COMENTARIO_ELIMINADO, requestOptions) as ItemComment;
         return data;

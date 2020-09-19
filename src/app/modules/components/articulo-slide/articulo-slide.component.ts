@@ -6,8 +6,8 @@ import {SolicitudService} from '../../services/mensajeria/solicitud.service';
 import {Util} from '../../system/generic/classes/util';
 import {StorageAppService} from '../../system/generic/service/storage-app.service';
 import {
-    COLOR_TOAST_CUSTOM_MORADO,
     COLOR_TOAST_PRIMARY,
+    COLOR_TOAST_SUCCESS,
     COLOR_TOAST_WARNING,
     DOBLE_DURATION_TOAST
 } from '../../system/generic/classes/constant';
@@ -156,7 +156,7 @@ export class ArticuloSlideComponent implements OnInit {
         await this.svrSolicitud.getDetalleSolicitud();
         const lstDetalleEmmiter: SolcitudDetalleModel[] = this.svrSolicitud.lstDetalle;
         this.dataService.lstPedido$.emit(lstDetalleEmmiter);
-        this.utilSvr.presentToast('Este artículo se ha agregado a la lista de pedidos', COLOR_TOAST_CUSTOM_MORADO, 'top', DOBLE_DURATION_TOAST);
+        this.utilSvr.presentToast('Este artículo se ha agregado a la lista de pedidos', COLOR_TOAST_SUCCESS, 'top', DOBLE_DURATION_TOAST);
     }
 
 
