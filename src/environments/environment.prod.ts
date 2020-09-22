@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  url: 'http://164.90.231.150:3000'
+  url: 'https://volarys.net',
 };
 
 export const firebaseConfig = {

@@ -8,6 +8,7 @@ export const OBTENER_TODOS_VEHICULO = 'vehiculoRoute/obtenerTodos';
 export const OBTENER_TODOS_RUTA_DISPONIBILIDAD = 'ruta/ObtenerIntegrantes';
 export const OBTENER_TODOS_ESTADO_RUTA = 'estadoRutaRoute/obtenerTodos';
 export const OBTENER_EVIO_NOTIFICACION = 'notificacion';
+export const OBTENER_EVIO_PWA_NOTIFICACION = 'notificacion/pwaPushNotification';
 export const OBTENER_TODOS_TIPO_USUARIO = 'tipoUsuario/obtenerTodos';
 export const OBTENER_TODOS_TIPO_USUARIO_POR_CODIGO = 'tipoUsuario/ObtenerPorCodigo';
 export const OBTENER_TIPO_USUARIO = 'tipoUsuario/ObtenerPorCampoValor';

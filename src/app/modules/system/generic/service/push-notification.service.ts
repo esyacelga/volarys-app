@@ -2,7 +2,7 @@ import {EventEmitter, Injectable} from '@angular/core';
 import {StorageAppService} from './storage-app.service';
 import {OneSignal, OSNotification, OSNotificationPayload} from '@ionic-native/onesignal/ngx';
 import {ExecuteCallProcedureService} from './execute-call-procedure.service';
-import {OBTENER_EVIO_NOTIFICACION} from '../../../constantes/ConstanteConsulta';
+import {OBTENER_EVIO_NOTIFICACION, OBTENER_EVIO_PWA_NOTIFICACION} from '../../../constantes/ConstanteConsulta';
 import {MensajeOneSignal} from '../classes/MensajeOneSignal';
 import {RequestOptions} from '../classes/RequestOptions';
 import {NavController} from '@ionic/angular';
@@ -31,8 +31,14 @@ export class PushNotificationService {
 
     async enviarNotificacion(mensaje: MensajeOneSignal, mensajeExito) {
         const options = new RequestOptions();
-        options.successMessaje = mensajeExito;
         const data = await this.genericService.servicioRestGenericoGet(mensaje, OBTENER_EVIO_NOTIFICACION, options);
+        return data;
+    }
+
+    async pwaEnvioNotificacion(titulo: string, mensaje: string) {
+        const options = new RequestOptions();
+        const objNotificator = {titulo, mensaje};
+        const data = await this.genericService.servicioRestGenericoGet(objNotificator, OBTENER_EVIO_PWA_NOTIFICACION, options);
         return data;
     }
 
