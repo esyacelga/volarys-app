@@ -31,12 +31,14 @@ export class PushNotificationService {
 
     async enviarNotificacion(mensaje: MensajeOneSignal, mensajeExito) {
         const options = new RequestOptions();
+        options.mostrarLoading = false;
         const data = await this.genericService.servicioRestGenericoGet(mensaje, OBTENER_EVIO_NOTIFICACION, options);
         return data;
     }
 
     async pwaEnvioNotificacion(titulo: string, mensaje: string) {
         const options = new RequestOptions();
+        options.mostrarLoading = false;
         const objNotificator = {titulo, mensaje};
         const data = await this.genericService.servicioRestGenericoGet(objNotificator, OBTENER_EVIO_PWA_NOTIFICACION, options);
         return data;
