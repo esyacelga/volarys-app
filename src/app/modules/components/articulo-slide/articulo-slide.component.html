@@ -80,7 +80,10 @@
                             (click)="zoomImage(data.portada,data.articuloSegmento._id)">
                     <fa-icon [icon]="wstp"></fa-icon>
                 </ion-button>
-                <img [src]="(data.portada | imagen: data.articuloSegmento._id )  |urlSanitizer" class="thumb-img">
+                <img *ngIf="data.portada && data.articuloSegmento._id" [src]="((data.portada | imagen: data.articuloSegmento._id )  |urlSanitizer)"
+                     class="thumb-img">
+                .
+
             </ion-slide>
             <ion-card color="tertiary">
                 <br/>
