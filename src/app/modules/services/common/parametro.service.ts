@@ -15,6 +15,7 @@ export class ParametroService {
 
     public async obtenerParametroPorCodigo(codigo: string) {
         const requestOptions = new RequestOptions();
+        requestOptions.mostrarLoading = false;
         return await this.genericService.servicioRestGenericoGet({codigo}, OBTENER_PARAMETRO_POR_CODIGO, requestOptions);
     }
 

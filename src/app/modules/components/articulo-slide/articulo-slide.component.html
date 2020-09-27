@@ -128,8 +128,15 @@
                 <ion-button color="success" *ngIf="!data.ocultarBotonSolicitar" (click)="seleccionarArticulo(data)"
                             expand="block">Agregar a pedidos
                 </ion-button>
+
+                <ion-button color="success"
+                            *ngIf="data.ocultarBotonSolicitar === true && data.articuloSegmento.codigoParametro==='WHATSAPP'"
+                            (click)="solicitudPorWTS(data)"
+                            expand="block">Solicitud por WHATSAPP
+                </ion-button>
+
                 <ion-button color="dark" *ngIf="data.verObservacion" (click)="verMasPanel(data)"
-                            expand="block">ver más
+                            expand="block">ver más...
                 </ion-button>
             </ion-card>
             <ion-card color="dark" *ngIf="!data.permiteComentar">

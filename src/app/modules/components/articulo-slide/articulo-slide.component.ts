@@ -24,6 +24,8 @@ import {environment} from '../../../../environments/environment';
 import {DataService} from '../../services/mensajeria/data.service';
 import {faExpandAlt} from '@fortawesome/free-solid-svg-icons';
 import {VerMasPage} from '../ver-mas/ver-mas.page';
+import {ParametroInterface} from '../../interfaces/common/ParametroInterface';
+import {ParametroService} from '../../services/common/parametro.service';
 
 const URL = environment.url;
 
@@ -36,7 +38,8 @@ export class ArticuloSlideComponent implements OnInit {
     @Input() segmento: Segmento;
     @Input() lstArticulo: Array<ObjetoArticulo>;
     public wstp = faExpandAlt;
-
+    public numeroContacto: string;
+    public parametro: ParametroInterface;
     public lstDetalle: SolcitudDetalleModel[] = [];
     public comentarioActivado = false;
     public modeloPersonaTipoUsuario: ModeloTipoUsuarioPersona;
@@ -48,6 +51,7 @@ export class ArticuloSlideComponent implements OnInit {
 
     constructor(private svrSolicitud: SolicitudService,
                 private utilSvr: Util,
+                private svrParametro: ParametroService,
                 private dataService: DataService,
                 private platform: Platform,
                 private photoViewer: PhotoViewer,
@@ -130,6 +134,10 @@ export class ArticuloSlideComponent implements OnInit {
         return;
     }
 
+    public solicitudPorWTS() {
+        window.open(this.numeroContacto, '_system');
+    }
+
     async seleccionarArticulo(item: ObjetoArticulo) {
         if (!this.validarFechas(item)) {
             this.utilSvr.presentToast('El servicio solicitado se encuentra fuera de horario', COLOR_TOAST_WARNING);
@@ -161,6 +169,8 @@ export class ArticuloSlideComponent implements OnInit {
 
 
     async ngOnInit() {
+        this.parametro = (await this.svrParametro.obtenerParametroPorCodigo('NUMERO_TELEFONO_WATSUP') as ParametroInterface);
+        this.numeroContacto = 'whatsapp://send?phone=' + this.parametro.valor + '';
         this.modeloPersonaTipoUsuario = (await this.svrStorage.loadStorageObject('usuario')) as ModeloTipoUsuarioPersona;
     }
 
