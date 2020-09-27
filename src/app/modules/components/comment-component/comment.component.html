@@ -1,3 +1,12 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-item color="primary">
+            <ion-avatar slot="end">
+                <img src="/assets/avatars/logo-volarys.png">
+            </ion-avatar>
+        </ion-item>
+    </ion-toolbar>
+</ion-header>
 <ion-content color="tertiary">
     <ion-card *ngFor="let comment of lsComentarios" color="light">
         <div *ngIf="comment.persona.displayName">
@@ -29,7 +38,6 @@
             </ion-card-content>
         </div>
     </ion-card>
-
 </ion-content>
 <ion-footer color="dark" padding>
     <ion-toolbar color="dark">

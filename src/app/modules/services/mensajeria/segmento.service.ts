@@ -33,11 +33,20 @@ export class SegmentoService {
         return await this.genericService.servicioRestGenericoGet({}, OBTENER_TODOS_SEGMENTOS, requestOptions);
     }
 
+    async obtenerSegmentosTodos() {
+        const requestOptions = new RequestOptions();
+        requestOptions.mostrarLoading = true;
+        requestOptions.loadingMessage = 'Cargando se'
+        return await this.genericService.servicioRestGenericoGet({}, OBTENER_TODOS_SEGMENTOS, requestOptions);
+    }
+
+
     async obtenerSegmentoPorArticulo(tipoArticulo) {
         const filtro = {
             tipoArticulo
         };
         const requestOptions = new RequestOptions();
+        requestOptions.loadingMessage = 'Cargando segmentos';
         return await this.genericService.servicioRestGenericoGet(filtro, OBTENER_TODOS_POR_TIPO_ARTICULO, requestOptions);
     }
 

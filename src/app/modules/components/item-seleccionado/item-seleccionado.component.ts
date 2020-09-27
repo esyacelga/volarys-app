@@ -18,16 +18,15 @@ export class ItemSeleccionadoComponent implements OnInit {
     lstSegmento: Segmento[];
     lstArticulo: Articulo[];
 
-
     constructor(private svrSegmentoAticulo: SegmentoService, private svrArticulo: ArticuloService, private svrStorage: StorageAppService) {
     }
 
-
     async ngOnInit() {
-        this.lstSegmento = (await this.svrStorage.loadStorageObject('lstSegmento')) as Segmento[];
-        // this.lstSegmento = await this.svrSegmentoAticulo.obtenerSegmentoPorArticulo(this.tipoArticulo._id) as Segmento[];
-        this.lstArticulo = (await this.svrStorage.loadStorageObject('lstArticulo')) as Articulo[];
-        // this.lstArticulo = await this.svrArticulo.obtenerArticulos() as Articulo[];
+        this.lstSegmento = await this.svrSegmentoAticulo.obtenerSegmentoPorArticulo(this.tipoArticulo._id) as Segmento[];
+        this.lstArticulo = (await this.svrStorage.loadStorageObject('lstArticulo')) as Articulo[]
+        if (this.lstArticulo && this.lstArticulo.length === 0) {
+            this.lstArticulo = await this.svrArticulo.obtenerArticulos() as Articulo[];
+        }
     }
 
 

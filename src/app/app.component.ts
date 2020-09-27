@@ -10,7 +10,6 @@ import {Network} from '@ionic-native/network/ngx';
 import {Util} from './modules/system/generic/classes/util';
 import {COLOR_TOAST_DARK, COLOR_TOAST_SUCCESS, OFFLINE, ONLINE} from './modules/system/generic/classes/constant';
 import {Location} from '@angular/common';
-import {CatalogosMensajeriaService} from './modules/services/mensajeria/CatalogosMensajeria.service';
 
 @Component({
     selector: 'app-root',
@@ -23,7 +22,6 @@ export class AppComponent {
 
 
     constructor(
-        private svrCar: CatalogosMensajeriaService,
         private location: Location,
         private platform: Platform,
         private splashScreen: SplashScreen,
@@ -41,7 +39,6 @@ export class AppComponent {
 
 
     public initializeApp() {
-        this.svrCar.actualizarCatalogosStorage();
         this.platform.ready().then(async () => {
             this.iniciaPulginCordova();
             this.modeloPersonaTipoUsuario = (await this.svrStorage.loadStorageObject('usuario')) as ModeloTipoUsuarioPersona;
@@ -69,10 +66,10 @@ export class AppComponent {
     }
 
 
-  /*  ngOnDestroy() {
-        this.svrCar.actualizarCatalogosStorage();
-    }
-*/
+    /*  ngOnDestroy() {
+          this.svrCar.actualizarCatalogosStorage();
+      }
+  */
     public showExitConfirm() {
         this.alertController.create({
             header: 'Salida',

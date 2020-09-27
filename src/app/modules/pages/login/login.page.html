@@ -12,28 +12,17 @@
                         <ion-row *ngIf="!esProduccion">
                             <ion-col>
                                 <ion-list class="background-input">
-
                                     <ion-item [hidden]="true">
                                         <ion-input></ion-input>
                                     </ion-item>
-
                                     <ion-item>
                                         <ion-input formControlName="correo" type="email"
                                                    placeholder="Email"></ion-input>
                                     </ion-item>
-
-
-                                    <ion-item>
-                                        <ion-input formControlName="clave" type="password"
-                                                   placeholder="Password"></ion-input>
-                                    </ion-item>
-
-
                                     <ion-item [hidden]="true">
                                         <ion-input
                                                 placeholder="Password"></ion-input>
                                     </ion-item>
-
                                 </ion-list>
                             </ion-col>
                         </ion-row>

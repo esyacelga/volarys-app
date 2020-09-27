@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Articulo} from '../../../classes/mensajeria/Articulo';
 import {TipoArticulo} from '../../../classes/mensajeria/tipo-articulo';
 import {TipoArticuloClientService} from '../../../services/mensajeria/tipo-articulo-client.service';
-import {ModeloTipoUsuarioPersona} from '../../../classes/persona/TipoUsuarioPersona';
 import {Platform} from '@ionic/angular';
+import {CatalogosMensajeriaService} from '../../../services/mensajeria/CatalogosMensajeria.service';
 
 @Component({
     selector: 'app-tab1',
@@ -15,10 +15,11 @@ export class DashboardPage implements OnInit {
     articulo: Articulo;
     tipoArticulo: TipoArticulo;
     lstTipoArticulo: any[];
-    modeloPersonaTipoUsuario: ModeloTipoUsuarioPersona;
 
 
-    constructor(private svcTipoArticulo: TipoArticuloClientService, private platform: Platform) {
+    constructor(private svcTipoArticulo: TipoArticuloClientService,
+                private svrArticulo: CatalogosMensajeriaService,
+                private platform: Platform) {
         this.platform.backButton.subscribeWithPriority(20, (processNextHandler) => {
             if (this.tipoArticulo === null) {
                 processNextHandler();
@@ -31,6 +32,7 @@ export class DashboardPage implements OnInit {
 
     async ngOnInit() {
         this.lstTipoArticulo = (await this.svcTipoArticulo.obtenerTipoArticulos()) as [];
+        this.svrArticulo.actualizarCatalogosArticulo();
     }
 
     ionViewWillEnter() {
@@ -38,6 +40,7 @@ export class DashboardPage implements OnInit {
     }
 
     selecionar(item: TipoArticulo) {
+
         this.tipoArticulo = item;
     }
 

@@ -61,10 +61,9 @@ export class PedidoPage implements OnInit {
         mensaje.key = 'ruta';
         mensaje.valor = 'managment';
         // this.nvr.navigateForward('managment');
-        await this.svrNoti.enviarNotificacion(mensaje, 'Su pedido ha sido notificada');
-        await this.svrNoti.pwaEnvioNotificacion('Nuevo Pedido', mensaje.detalleNotificacion);
         this.eliminarLista();
-
+        await this.svrNoti.enviarNotificacion(mensaje, 'Su pedido ha sido notificada');
+        await this.svrNoti.pwaEnvioNotificacion('Se ha generado un nuevo pedido', mensaje.detalleNotificacion);
     }
 
 

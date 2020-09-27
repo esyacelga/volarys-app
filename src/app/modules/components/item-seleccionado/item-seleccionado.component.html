@@ -1,8 +1,75 @@
 <ion-grid>
     <ion-row>
-        <ion-col *ngFor="let item of lstSegmento | tipoArticulo: {idTipoArticulo: tipoArticulo._id};" sizeXs="12"
-                 sizeSm="6" size="12"
-                 sizeMd="4" sizeLg="6" sizeXl="3">
+        <ion-slides *ngIf="!lstSegmento" loop="true">
+            <ion-slide>
+                <ion-card color="secondary">
+                    <ion-card-header>
+                        <ion-skeleton-text animated style="width:100%"></ion-skeleton-text>
+                    </ion-card-header>
+                    <ion-slide class="image-slide">
+                        <ion-skeleton-text animated style="width:300px;height: 250px"></ion-skeleton-text>
+                    </ion-slide>
+                    <ion-card color="tertiary">
+                        <br/>
+                        <div>
+                            <ion-label class="card-center">
+                                <h3>
+                                    <small>
+                                        <strong>
+                                            <ion-skeleton-text slot="end" animated style="width:25%"></ion-skeleton-text>
+                                        </strong>
+                                    </small>
+                                </h3>
+                            </ion-label>
+
+                            <div>
+                                <ion-label class="card-center">
+                                    <small>
+                                        <ion-skeleton-text slot="end" animated style="width:100%"></ion-skeleton-text>
+                                    </small>
+                                </ion-label>
+                                <ion-label class="card-center">
+                                    <small>
+                                        <ion-skeleton-text slot="end" animated style="width:75%"></ion-skeleton-text>
+                                    </small>
+                                </ion-label>
+                                <ion-label class="card-center">
+                                    <small>
+                                        <ion-skeleton-text slot="end" animated style="width:80%"></ion-skeleton-text>
+                                    </small>
+                                </ion-label>
+                            </div>
+                        </div>
+                    </ion-card>
+                    <ion-card color="dark">
+                        <ion-row>
+                            <ion-col>
+                                <ion-button fill="clear" size="small">
+                                    <ion-icon slot="start" name="thumbs-up"></ion-icon>
+                                    <div>Lo recomiendo</div>
+                                </ion-button>
+                            </ion-col>
+                            <ion-col>
+                                <ion-button fill="clear" size="small">
+                                    <ion-icon slot="start" name="thumbs-down"></ion-icon>
+                                    <div>No lo recomiendo
+                                    </div>
+                                </ion-button>
+                            </ion-col>
+                            <ion-col>
+                                <ion-button fill="clear" size="small">
+                                    <ion-icon slot="start" name="chatbox-ellipses-outline"></ion-icon>
+                                    <div>
+                                        Comente nuestro servicio
+                                    </div>
+                                </ion-button>
+                            </ion-col>
+                        </ion-row>
+                    </ion-card>
+                </ion-card>
+            </ion-slide>
+        </ion-slides>
+        <ion-col   *ngFor="let item of lstSegmento" sizeXs="12" sizeSm="6" size="12" sizeMd="4" sizeLg="6" sizeXl="3">
             <app-articulo-slide [segmento]="item" [lstArticulo]="lstArticulo"></app-articulo-slide>
         </ion-col>
     </ion-row>

@@ -119,17 +119,12 @@ export class LoginPage implements OnInit {
 
 
     async login() {
-        if (this.ingresoForm.status === 'INVALID') {
+        if (!this.ingresoForm.value.correo) {
             this.util.presentToast('Debe ingresar la información solicitada, (Usuario, Contraseña ).', COLOR_TOAST_WARNING);
             return;
         }
-        const data: ModeloTipoUsuarioPersona[] = (await this.svrUsuario.loginUsuario(
-            this.ingresoForm.value.correo, this.ingresoForm.value.clave)) as ModeloTipoUsuarioPersona[];
-        if (data && data.length > 0) {
-            this.redirigirFormulario(data[0]);
-        } else {
-            this.util.presentToast('Usuario y contraseña no son correctos.', COLOR_TOAST_WARNING);
-        }
+        const objTipoUsuarioPersona: ModeloTipoUsuarioPersona = (await this.svtTipoUsuariPersona.obtenerPorCorreo(this.ingresoForm.value.correo) as ModeloTipoUsuarioPersona);
+        this.redirigirFormulario(objTipoUsuarioPersona);
     }
 
     async redirigirFormulario(objTipoUsuarioPersona: ModeloTipoUsuarioPersona) {
