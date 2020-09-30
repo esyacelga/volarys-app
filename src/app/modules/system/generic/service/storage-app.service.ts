@@ -12,9 +12,9 @@ export class StorageAppService {
 
     }
 
-    eliminarTodo() {
+    async eliminarTodo() {
         if (this.platform.is('cordova')) {
-            this.storage.clear();
+            await this.storage.clear();
 
         } else {
             localStorage.clear();

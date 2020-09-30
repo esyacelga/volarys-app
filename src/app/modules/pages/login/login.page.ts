@@ -61,10 +61,25 @@ export class LoginPage implements OnInit {
     }
 
 
+    /*    async loginFaceBook() {
+            if (this.platform.is('cordova')) {
+                await this.loading.present('messagesService.loadMessagesOverview', 'Procesando...');
+                const objUsuario: GoogleObject = (await this.svrLogin.loginWithFaceBook() as GoogleObject);
+                this.loading.dismiss('messagesService.loadMessagesOverview');
+                if (objUsuario) {
+                    await this.validarLogin(objUsuario);
+                }
+            } else {
+                this.util.presentToast('Opcion no disponible desde la WEB', COLOR_TOAST_WARNING);
+            }
+        }*/
+
+
     async loginFaceBook() {
         if (this.platform.is('cordova')) {
-            await this.loading.present('messagesService.loadMessagesOverview', 'Procesando...');
-            const objUsuario: GoogleObject = (await this.svrLogin.loginWithFaceBook() as GoogleObject);
+            await this.loading.present('messagesService.loadMessagesOverview', 'Integrando con Facebook...');
+            // @ts-ignore
+            const objUsuario: GoogleObject = (await (this.svrLogin.loginWithFaceBook().catch(this.loading.dismiss('messagesService.loadMessagesOverview'))) as GoogleObject);
             this.loading.dismiss('messagesService.loadMessagesOverview');
             if (objUsuario) {
                 await this.validarLogin(objUsuario);
@@ -76,8 +91,9 @@ export class LoginPage implements OnInit {
 
     async loginGoogle() {
         if (this.platform.is('cordova')) {
-            await this.loading.present('messagesService.loadMessagesOverview', 'Procesando...');
-            const objUsuario: GoogleObject = (await this.svrLogin.loginWithGoogle() as GoogleObject);
+            await this.loading.present('messagesService.loadMessagesOverview', 'Integrando con Google...');
+            // @ts-ignore
+            const objUsuario: GoogleObject = (await (this.svrLogin.loginWithGoogle().catch(this.loading.dismiss('messagesService.loadMessagesOverview'))) as GoogleObject);
             this.loading.dismiss('messagesService.loadMessagesOverview');
             if (objUsuario) {
                 await this.validarLogin(objUsuario);

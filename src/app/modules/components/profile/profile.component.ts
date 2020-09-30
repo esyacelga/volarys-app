@@ -5,7 +5,7 @@ import {SectorService} from '../../services/persona/sector.service';
 import {TipoUsuarioService} from '../../services/persona/tipo-usuario.service';
 import {Sector} from '../../classes/persona/Sector';
 import {Util} from '../../system/generic/classes/util';
-import {COLOR_TOAST_DARK, COLOR_TOAST_WARNING} from '../../system/generic/classes/constant';
+import {COLOR_TOAST_DARK, COLOR_TOAST_SUCCESS} from '../../system/generic/classes/constant';
 import {ModeloPersona, ModeloTipoUsuarioPersona, TipoUsuarioPersonaDto} from '../../classes/persona/TipoUsuarioPersona';
 import {StorageAppService} from '../../system/generic/service/storage-app.service';
 import {PersonaService} from '../../services/persona/persona.service';
@@ -102,30 +102,46 @@ export class ProfileComponent implements OnInit {
     async actualizarPersona() {
         this.tipoUsuarioPersona = this.ingresoForm.value;
         this.tipoUsuarioPersona._id = this.modeloPersonaTipoUsuario.persona._id;
-        if (this.ingresoForm.status === 'VALID') {
-            if (this.tipoUsuarioPersona.sector === undefined || this.tipoUsuarioPersona.sector === '') {
-                this.util.presentToast('Debe ingresar el sector de domicilio', COLOR_TOAST_WARNING);
-                return;
-            }
-            if (this.tipoUsuarioPersona && this.tipoUsuarioPersona.numeroTelefonoCelular === '' && this.tipoUsuarioPersona.numeroTelefonoConvencional === '') {
-                this.util.presentToast('Se debe ingresar al menos un número de teléfono', COLOR_TOAST_WARNING);
-                return;
-            }
-            if (this.tipoUsuarioPersona && this.tipoUsuarioPersona.numeroTelefonoCelular) {
-                this.tipoUsuarioPersona.numeroTelefonoCelular.replace(' ', '');
-            }
-            if (this.tipoUsuarioPersona && this.tipoUsuarioPersona.numeroTelefonoConvencional) {
-                this.tipoUsuarioPersona.numeroTelefonoConvencional.replace(' ', '');
-            }
+
+
+        if (this.tipoUsuarioPersona.sector === undefined || this.tipoUsuarioPersona.sector === '') {
+            this.util.presentToast('Es necesario que ingrese su sector de domicilio', COLOR_TOAST_SUCCESS);
+            return;
+        }
+        if (this.tipoUsuarioPersona && this.tipoUsuarioPersona.numeroTelefonoCelular === '' && this.tipoUsuarioPersona.numeroTelefonoConvencional === '') {
+            this.util.presentToast('Se debe ingresar al menos un número de teléfono', COLOR_TOAST_SUCCESS);
+            return;
+        }
+        if (this.tipoUsuarioPersona && this.tipoUsuarioPersona.numeroTelefonoCelular) {
+            this.tipoUsuarioPersona.numeroTelefonoCelular.replace(' ', '');
+        }
+        if (this.tipoUsuarioPersona && this.tipoUsuarioPersona.numeroTelefonoConvencional) {
             this.tipoUsuarioPersona.numeroTelefonoConvencional.replace(' ', '');
-            await this.svrPersona.actualizarPersona(this.tipoUsuarioPersona);
-            const objTipoUsuarioPersona: ModeloTipoUsuarioPersona = (await this.svtTipoUsuariPersona.obtenerPorCorreo(this.modeloPersonaTipoUsuario.persona.correo) as ModeloTipoUsuarioPersona);
-            this.svrStorage.eliminarTodo();
-            this.svrStorage.setStorageObject(objTipoUsuarioPersona, 'usuario');
-            this.modal.dismiss();
-        } else {
+        }
+        if (this.tipoUsuarioPersona && (this.tipoUsuarioPersona.apellidos === '' || this.tipoUsuarioPersona.apellidos === null)) {
+            this.util.presentToast('Es necesario que ingrese su apellido', COLOR_TOAST_SUCCESS);
+            return;
+        }
+
+        if (this.tipoUsuarioPersona && (this.tipoUsuarioPersona.nombres === '' || this.tipoUsuarioPersona.nombres === null)) {
+            this.util.presentToast('Es necesario que ingrese su nombre', COLOR_TOAST_SUCCESS);
+            return;
+        }
+
+        if (this.tipoUsuarioPersona && (this.tipoUsuarioPersona.fechaNacimiento === null)) {
+            this.util.presentToast('Es necesario ingresar el apellido', COLOR_TOAST_SUCCESS);
+            return;
+        }
+
+        this.tipoUsuarioPersona.numeroTelefonoConvencional.replace(' ', '');
+        if (this.ingresoForm.status === 'INVALID') {
             this.util.presentToast('Por favor ingrese la información solicitada', COLOR_TOAST_DARK);
         }
+        await this.svrPersona.actualizarPersona(this.tipoUsuarioPersona);
+        const objTipoUsuarioPersona: ModeloTipoUsuarioPersona = (await this.svtTipoUsuariPersona.obtenerPorCorreo(this.modeloPersonaTipoUsuario.persona.correo) as ModeloTipoUsuarioPersona);
+        this.svrStorage.eliminarTodo();
+        this.svrStorage.setStorageObject(objTipoUsuarioPersona, 'usuario');
+        this.modal.dismiss();
     }
 
     async ngOnInit() {

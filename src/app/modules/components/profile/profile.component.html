@@ -45,8 +45,10 @@
                     <ion-item color="dark">
                         <ion-label position="floating">*Fecha de nacimiento</ion-label>
                         <ion-datetime formControlName="fechaNacimiento"
-                                      display-format="MMM DD, YYYY"></ion-datetime>
+                                      monthShortNames="Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre"
+                                      display-format="DD MMM, YYYY"></ion-datetime>
                     </ion-item>
+
 
                     <div class="error-messages">
                         <ng-container *ngFor="let error of error_messages.fechaNacimiento">
@@ -58,7 +60,7 @@
                     </div>
 
                     <ion-item color="dark">
-                        <ion-label position="floating">*Sector de domicilio</ion-label>
+                        <ion-label position="floating">* Sector de domicilio</ion-label>
                         <ion-select ngModel="modeloPersonaTipoUsuario.persona.sector" formControlName="sector"
                                     value="sector._id" okText="Ok" cancelText="Cancelar">
                             <ion-select-option *ngFor="let sector  of lstSectores"
@@ -116,7 +118,7 @@
             <ion-button
                     type="submit"
                     color="warning"
-                    expand="block">Actualizar información personal
+                    expand="block">Actualizar mi información personal
             </ion-button>
             <ion-button (click)="cerrrarPanel()"
                         color="primary"

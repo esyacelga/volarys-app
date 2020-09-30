@@ -37,14 +37,14 @@ export class SettingsPage implements OnInit {
 
     }
 
-    salirSesion() {
-        this.svrStorage.eliminarTodo();
+    async salirSesion() {
+        await this.svrStorage.eliminarTodo();
         this.navCtrl.navigateRoot('login');
         if (this.platform.is('cordova')) {
             this.svrFB.logout().then(data => {
                 this.util.presentToast('Ha cerrardo sesion', COLOR_TOAST_PRIMARY);
             }, (error) => {
-                this.util.presentToast('Ha cerrardo sesion', COLOR_TOAST_WARNING);
+                this.util.presentToast('Ha cerrardo sesion.', COLOR_TOAST_WARNING);
             });
         }
     }

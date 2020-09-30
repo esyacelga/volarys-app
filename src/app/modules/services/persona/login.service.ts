@@ -39,10 +39,21 @@ export class LoginService {
             this.utils.presentToast(OFFLINE, COLOR_TOAST_MEDIUM, 'bottom');
             return null;
         }
-        return this.google.login({}).then(result => {
-            const userDataGoogle = result;
-            return this.svrAuth.signInWithCredential(auth.GoogleAuthProvider.credential(null, userDataGoogle.accessToken));
+        const promesa = new Promise(async (resolve, reject) => {
+            return this.google.login({}).then(result => {
+                const userDataGoogle = result;
+                this.svrAuth.signInWithCredential(auth.GoogleAuthProvider.credential(null, userDataGoogle.accessToken)).then(
+                    (objResponce) => {
+                        resolve(objResponce);
+                    }, (error) => {
+                        resolve(null);
+                    }
+                );
+            }, (error) => {
+                resolve(null);
+            });
         });
+        return promesa;
     }
 
     loginWithFaceBook() {
